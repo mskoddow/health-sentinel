@@ -8,12 +8,12 @@
         <hint/>
         <homepage/>
         <image/>
-        <link_type>LIST</link_type>
+        <link_type>NEW</link_type>
         <map_page/>
-        <mobile_title>All sensors</mobile_title>
+        <mobile_title>Create new Sensor</mobile_title>
         <mobile_view_name>Mobile</mobile_view_name>
         <name>u_sensor</name>
-        <order>120</order>
+        <order>110</order>
         <override_menu_roles>false</override_menu_roles>
         <query/>
         <report/>
@@ -21,21 +21,21 @@
         <roles/>
         <sys_class_name>sys_app_module</sys_class_name>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-13 05:34:41</sys_created_on>
+        <sys_created_on>2025-05-18 08:31:55</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>50a01d688365ae10009231b6feaad3b4</sys_id>
-        <sys_mod_count>2</sys_mod_count>
-        <sys_name>All Sensors</sys_name>
+        <sys_id>9849ebc683e5a650009231b6feaad341</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Create new Sensor</sys_name>
         <sys_overrides/>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
-        <sys_update_name>sys_app_module_50a01d688365ae10009231b6feaad3b4</sys_update_name>
+        <sys_update_name>sys_app_module_9849ebc683e5a650009231b6feaad341</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-18 08:30:58</sys_updated_on>
+        <sys_updated_on>2025-05-18 08:31:55</sys_updated_on>
         <timeline_page/>
-        <title>All Sensors</title>
+        <title>Create new Sensor</title>
         <uncancelable>false</uncancelable>
         <view_name>health_sentinel</view_name>
         <window_name/>
