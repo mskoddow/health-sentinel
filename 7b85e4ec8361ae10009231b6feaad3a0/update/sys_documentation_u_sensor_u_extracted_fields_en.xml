@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_extracted_fields" label="Extracted fields" language="en" table="u_sensor">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_extracted_fields</element>
+            <help/>
+            <hint>The contents of the fields specified here are transferred to the signal content from the findings in the table to be analyzed. The optional numerical value per field specifies the maximum length of the field's content. </hint>
+            <label>Extracted fields</label>
+            <language>en</language>
+            <name>u_sensor</name>
+            <plural>Extracted fields</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 05:19:23</sys_created_on>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>Extracted fields</sys_name>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_documentation_u_sensor_u_extracted_fields_en</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 05:22:46</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sysevent_register">
+    <sysevent_register action="INSERT_OR_UPDATE">
+        <caller_access/>
+        <derived_priority>100</derived_priority>
+        <description>Intended for sending emails based on the collected signal content of an activated sensor</description>
+        <event_name>health_sentinel.send_email</event_name>
+        <fired_by>Health Sentinel Sensors</fired_by>
+        <priority>100</priority>
+        <queue/>
+        <suffix/>
+        <sys_class_name>sysevent_register</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-13 12:21:44</sys_created_on>
+        <sys_id>268de26c832dae10009231b6feaad3d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>health_sentinel.send_email</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sysevent_register_268de26c832dae10009231b6feaad3d4</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-13 12:21:44</sys_updated_on>
+        <table>u_sensor</table>
+    </sysevent_register>
+</record_update>

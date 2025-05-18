@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.Signal</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>Signal</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var Signal = Class.create();
+
+Signal.prototype = {
+    initialize: function() {
+		this._isValid              = false;
+		this._strDetectionTime     = new GlideDateTime().getValue();
+		this._objParameters        = {};
+		this._strNodeName          = 'not initialized';
+		this._strSensorName        = 'not initialized';
+		this._strSensorDescription = 'not initialized';
+		this._strSensorSysID       = 'not initialized';
+		this._strSensorSeverity    = 'not initialized';
+		this._strSensorURL         = 'not initialized';
+		this._strSensorTableName   = 'not initialized';
+		this._strSensorTableLabel  = 'not initialized';
+		this._strSensorTableFilter = 'not initialized';
+		this._numFindingsTotal     = 0;
+		this._strFindingsURL       = 'not initialized';
+		this._arrFindings          = [];
+    },
+
+
+	setDetectionTime: function(
+		strDetectionTime
+	) {
+		if (typeof strDetectionTime !== 'string' || strDetectionTime === null) {
+			throw new TypeError(
+				'[Signal.setDetectionTime] Value of parameter "strDetectionTime" is ' +
+				'not of type "String"!'
+			);
+		}
+
+		this._strDetectionTime = strDetectionTime;
+	},
+
+
+	getDetectionTime: function(
+
+	) {
+		return this._strDetectionTime;
+	},
+
+
+	setNodeName: function(
+		strNodeName
+	) {
+		if (typeof strNodeName !== 'string' || strNodeName === null) {
+			throw new TypeError(
+				'[Signal.setNodeName] Value of parameter "strNodeName" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strNodeName = strNodeName.trim();
+	},
+
+
+	getNodeName: function(
+	
+	) {
+		return this._strNodeName;
+	},
+
+
+	setParameters: function(
+		objParameters
+	) {
+		if (typeof objParameters !== 'object') {
+			throw new TypeError(
+				'[Signal.setParameters] Value of parameter "objParameters" is not ' +
+				'of type "Object"!'
+			);
+		}
+
+		this._objParameters = objParameters;
+	},
+
+
+	getParameters: function(
+
+	) {
+		return this._objParameters;
+	},
+
+
+	setParameter: function(
+		strKey, 
+		objValue
+	) {
+		if (typeof strKey !== 'string' || strKey === null) {
+			throw new TypeError(
+				'[Signal.setParameter] Value of parameter "strKey" is not of type "String"!'
+			);
+		}
+
+		if (JSUtil.nil(objValue)) {
+			throw new TypeError(
+				'[Signal.setParameter] Parameter "objValue" has no value!'
+			);		
+		}
+
+		this._objParameters[strKey.trim()] = objValue;
+	},
+
+
+	getParameter: function(
+		strKey
+	) {
+		if (typeof strKey !== 'string' || strKey === null) {
+			throw new TypeError(
+				'[Signal.setParameter] Value of parameter "strKey" is not of type "String"!'
+			);
+		}
+
+		var _strKey = strKey.trim();
+
+		return _strKey in this.getParameters() ? 
+			this.getParameters()[_strKey] :
+			'';
+	},
+
+
+	setSensorSeverity: function(
+		strSeverity
+	) {
+		if (typeof strSeverity !== 'string' || strSeverity === null) {
+			throw new TypeError(
+				'[Signal.setSensorSeverity] Value of parameter "strSeverity" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strSensorSeverity = strSeverity.trim();
+	},
+
+
+	getSensorSeverity: function(
+
+	) {
+		return this._strSensorSeverity;
+	},
+
+
+	setSensorName: function(
+		strName
+	) {
+		if (typeof strName !== 'string' || strName === null) {
+			throw new TypeError(
+				'[Signal.setSensorName] Value of parameter "strName" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strSensorName = strName.trim();
+	},
+
+
+	getSensorName: function(
+
+	) {
+		return this._strSensorName;
+	},
+
+
+	setSensorDescription: function(
+		strDescription
+	) {
+		if (typeof strDescription !== 'string' || strDescription === null) {
+			throw new TypeError(
+				'[Signal.setSensorDescription] Value of parameter "strDescription" ' +
+				'is not of type "String"!');
+		}
+
+		this._strSensorDescription = strDescription.trim();
+	},
+
+
+	getSensorDescription: function(
+
+	) {
+		return this._strSensorDescription;
+	},
+
+
+	setSensorSysID: function(strSensorSysID) {
+		if (typeof strSensorSysID !== 'string' || strSensorSysID === null) {
+			throw new TypeError(
+				'[Signal.setSensorSysID] Value of parameter "strSensorSysID" is ' +
+				'not of type "String"!'
+			);
+		}
+
+		if (!GlideStringUtil.isEligibleSysID(strSensorSysID)) {
+			throw new TypeError(
+				'[Signal.setSensorSysID] Value of parameter "strSensorSysID" does not ' +
+				'represent a valid Sys ID!'
+			);
+		}
+
+		this._strSensorSysID = strSensorSysID;
+	},
+
+
+	getSensorSysID: function(
+
+	) {
+		return this._strSensorSysID;
+	},
+
+
+	setSensorURL: function(
+		strURL
+	) {
+		if (typeof strURL !== 'string' || strURL === null) {
+			throw new TypeError(
+				'[Signal.setSensorURL] Value of parameter "strURL" is not of type "String"!'
+			);
+		}
+
+		this._strSensorURL = strURL.trim();
+	},
+
+
+	getSensorURL: function(
+
+	) {
+		return this._strSensorURL;
+	},
+
+
+	setSensorTableName: function(
+		strTableName
+	) {
+		if (typeof strTableName !== 'string' || strTableName === null) {
+			throw new TypeError(
+				'[Signal.setSensorTableName] Value of parameter "strTableName" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strSensorTableName = strTableName.trim();
+	},
+
+
+	getSensorTableName: function(
+
+	) {
+		return this._strSensorTableName;
+	},
+
+
+	setSensorTableLabel: function(
+		strTableLabel
+	) {
+		if (typeof strTableLabel !== 'string' || strTableLabel === null) {
+			throw new TypeError(
+				'[Signal.setSensorTableLabel] Value of parameter "strTableLabel" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strSensorTableLabel = strTableLabel.trim();
+	},
+
+
+	getSensorTableLabel: function(
+
+	) {
+		return this._strSensorTableLabel;
+	},
+
+
+	setSensorTableFilter: function(
+		strTableFilter
+	) {
+		if (typeof strTableFilter !== 'string' || strTableFilter === null) {
+			throw new TypeError(
+				'[Signal.setSensorTableFilter] Value of parameter "strTableFilter" ' +
+				'is not of type "String"!'
+			);
+		}
+
+		this._strSensorTableFilter = strTableFilter.trim();
+	},
+
+
+	getSensorTableFilter: function(
+
+	) {
+		return this._strSensorTableFilter;
+	},
+
+
+	setFindingsTotal: function (
+		numFindingsTotal
+	) {
+		if (typeof numFindingsTotal !== 'number' || numFindingsTotal < 0) {
+			throw new TypeError(
+				'[Signal.setFindingsTotal] Value of parameter "numFindingsTotal" ' +
+				'is not of type "String"!'
+			);
+		}
+
+		this._numFindingsTotal = numFindingsTotal;
+	},
+
+
+	getFindingsTotal: function (
+
+	) {
+		return this._numFindingsTotal;
+	},
+
+
+	setFindingsURL: function(
+		strURL
+	) {
+		if (typeof strURL !== 'string' || strURL === null) {
+			throw new TypeError(
+				'[Signal.setFindingsURL] Value of parameter "strURL" is not ' +
+				'of type "String"!'
+			);
+		}
+
+		this._strFindingsURL = strURL.trim();
+	},
+
+
+	getFindingsURL: function(
+
+	) {
+		return this._strFindingsURL;
+	},
+
+
+	setFindingsData: function(
+		arrFindings
+	) {
+		if (!Array.isArray(arrFindings)) {
+			throw new TypeError(
+				'[Signal.setFindingsData] Value of parameter "arrFindings" ' +
+				'does not represent an array!'
+			);
+		}
+
+		this._arrFindings = arrFindings;
+	},
+
+
+	getFindingsData: function(
+
+	) {
+		return this._arrFindings;
+	},
+
+
+	toString: function(
+
+	) {
+		var _objSignal = {
+			detected_on: 
+				this.getDetectionTime(),
+			detecting_node:
+				this.getNodeName(),
+			parameters:
+				this.getParameters(),
+			sensor: {
+				severity:
+					this.getSensorSeverity(),
+				name:
+					this.getSensorName(),
+				description:
+					this.getSensorDescription(),
+				sys_id:
+					this.getSensorSysID(),
+				url:
+					this.getSensorURL(),
+				table_name:
+					this.getSensorTableName(),
+				table_label:
+					this.getSensorTableLabel(),
+				table_filter: 
+					this.getSensorTableFilter()
+			},
+			findings: {
+				total: 
+					this.getFindingsTotal(),
+				url: 
+					this.getFindingsURL(),
+				data:
+					this.getFindingsData()
+			}
+		};
+
+		return JSON.stringify(_objSignal, null, 2);
+	},
+
+
+	loadPayload: function(
+		strPayload
+	) {
+		if (typeof strPayload !== 'string' || strPayload === null) {
+			throw new TypeError(
+				'[Signal.loadPayload] Value of parameter "strPayload" is not ' +
+				'of type "String"!'
+			);
+		}
+
+
+		var _jsonPayload = null;
+
+		try {
+			_jsonPayload = JSON.parse(strPayload);
+		}
+		catch (e) {
+			global.HealthSentinelUtils.logError(
+				'Signal.loadPayload',
+				'The value in parameter "strPayload" does not represent a ' +
+				'valid JSON payload!'
+			);
+
+			return false;
+		}
+
+		try {
+			if (_jsonPayload.detected_on) {
+				this.setDetectionTime(_jsonPayload.detected_on);
+			}
+
+			if (_jsonPayload.detecting_node) {
+				this.setNodeName(_jsonPayload.detecting_node);
+			}
+
+			if (_jsonPayload.parameters) {
+				this.setParameters(_jsonPayload.parameters);
+			}
+
+			if (_jsonPayload.sensor.severity) {
+				this.setSensorSeverity(_jsonPayload.sensor.severity);
+			}
+
+			if (_jsonPayload.sensor.name) {
+				this.setSensorName(_jsonPayload.sensor.name);
+			}
+
+			if (_jsonPayload.sensor.description) {
+				this.setSensorDescription(_jsonPayload.sensor.description);
+			}
+
+			if (_jsonPayload.sensor.sys_id) {
+				this.setSensorSysID(_jsonPayload.sensor.sys_id);
+			}
+
+			if (_jsonPayload.sensor.url) {
+				this.setSensorURL(_jsonPayload.sensor.url);
+			}
+
+			if (_jsonPayload.sensor.table_name) {
+				this.setSensorTableName(_jsonPayload.sensor.table_name);
+			}
+
+			if (_jsonPayload.sensor.table_filter) {
+				this.setSensorTableFilter(_jsonPayload.sensor.table_filter);
+			}
+
+			if (_jsonPayload.sensor.table_label) {
+				this.setSensorTableLabel(_jsonPayload.sensor.table_label);
+			}
+
+			if (_jsonPayload.sensor.table_label) {
+				this.setSensorTableLabel(_jsonPayload.sensor.table_label);
+			}
+
+			if (_jsonPayload.findings.total) {
+				this.setFindingsTotal(_jsonPayload.findings.total);
+			}
+
+			if (_jsonPayload.findings.url) {
+				this.setFindingsURL(_jsonPayload.findings.url);
+			}
+
+			if (_jsonPayload.findings.data) {
+				this.setFindingsData(_jsonPayload.findings.data);
+			}
+		}
+		catch (e) {
+			global.HealthSentinelUtils.logError(
+				'Signal.loadPayload',
+				'Error while loading and processing signal payload!',
+				e
+			);
+
+			return false;
+		}
+
+		return true;
+	},
+
+
+    type: 'Signal'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 11:23:49</sys_created_on>
+        <sys_id>cbf667fc83252250009231b6feaad3f0</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Signal</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_script_include_cbf667fc83252250009231b6feaad3f0</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 02:11:03</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>cbf667fc83252250009231b6feaad3f0</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 11:23:49</sys_created_on>
+        <sys_id>0f6a2f7c83252250009231b6feaad306</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-14 11:23:49</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

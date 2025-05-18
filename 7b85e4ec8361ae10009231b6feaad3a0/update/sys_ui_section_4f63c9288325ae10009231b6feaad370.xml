@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Execution cadence" section_id="4f63c9288325ae10009231b6feaad370" sys_domain="global" table="u_sensor" version="3" view="health_sentinel">
+        <sys_ui_annotation action="INSERT_OR_UPDATE">
+            <is_plain_text>false</is_plain_text>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:54</sys_created_on>
+            <sys_id>b2756d3d83692650009231b6feaad331</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:54</sys_updated_on>
+            <text>${gs.getMessage("sysauto_form.timezone")}</text>
+            <type display_value="Info Box Blue">753f88a80f930000b12e6903cfe01206</type>
+        </sys_ui_annotation>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>b2756d3d83692650009231b6feaad331</element>
+            <position>0</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>b2756d3d83692650009231b6feaad339</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type>annotation</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_type</element>
+            <position>1</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>be756d3d83692650009231b6feaad339</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_dayofmonth</element>
+            <position>2</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>36756d3d83692650009231b6feaad33a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_dayofweek</element>
+            <position>3</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>ba756d3d83692650009231b6feaad33a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>time_zone</element>
+            <position>4</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>32756d3d83692650009231b6feaad33b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>business_calendar</element>
+            <position>5</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>b6756d3d83692650009231b6feaad33b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_time</element>
+            <position>6</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>3e756d3d83692650009231b6feaad33b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>entered_time</element>
+            <position>7</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>b2756d3d83692650009231b6feaad33c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_period</element>
+            <position>8</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>3a756d3d83692650009231b6feaad33c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>run_start</element>
+            <position>9</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>be756d3d83692650009231b6feaad33c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>condition</element>
+            <position>10</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-17 04:16:55</sys_created_on>
+            <sys_id>36756d3d83692650009231b6feaad33d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Execution cadence" display_value="Execution cadence" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">4f63c9288325ae10009231b6feaad370</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:55</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Execution cadence</caption>
+            <header>false</header>
+            <name>u_sensor</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 04:35:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>4f63c9288325ae10009231b6feaad370</sys_id>
+            <sys_mod_count>1</sys_mod_count>
+            <sys_name>u_sensor</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_ui_section_4f63c9288325ae10009231b6feaad370</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-17 04:16:54</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Health Sentinel" name="health_sentinel">b78db4608325ae10009231b6feaad366</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

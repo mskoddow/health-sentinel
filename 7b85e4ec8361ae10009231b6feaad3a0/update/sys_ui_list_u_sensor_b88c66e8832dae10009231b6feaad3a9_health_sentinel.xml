@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="u_sensor" relationship="b88c66e8832dae10009231b6feaad3a9" sys_domain="global" table="sysevent" version="2" view="health_sentinel">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_created_on</element>
+            <list_id display_value="sysevent" element="NULL" name="sysevent" parent="u_sensor" relationship="b88c66e8832dae10009231b6feaad3a9" sys_domain="global" view="b78db4608325ae10009231b6feaad366">8e99f22c836dae10009231b6feaad365</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:12:00</sys_created_on>
+            <sys_id>0a99f22c836dae10009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:12:00</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>state</element>
+            <list_id display_value="sysevent" element="NULL" name="sysevent" parent="u_sensor" relationship="b88c66e8832dae10009231b6feaad3a9" sys_domain="global" view="b78db4608325ae10009231b6feaad366">8e99f22c836dae10009231b6feaad365</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:12:00</sys_created_on>
+            <sys_id>8a99f22c836dae10009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:12:00</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>claimed_by</element>
+            <list_id display_value="sysevent" element="NULL" name="sysevent" parent="u_sensor" relationship="b88c66e8832dae10009231b6feaad3a9" sys_domain="global" view="b78db4608325ae10009231b6feaad366">8e99f22c836dae10009231b6feaad365</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:12:00</sys_created_on>
+            <sys_id>0e99f22c836dae10009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:12:00</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>processing_duration</element>
+            <list_id display_value="sysevent" element="NULL" name="sysevent" parent="u_sensor" relationship="b88c66e8832dae10009231b6feaad3a9" sys_domain="global" view="b78db4608325ae10009231b6feaad366">8e99f22c836dae10009231b6feaad365</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:12:00</sys_created_on>
+            <sys_id>8e99f22c836dae10009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:12:00</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>sysevent</name>
+            <parent>u_sensor</parent>
+            <position/>
+            <relationship display_value="Fired Events">b88c66e8832dae10009231b6feaad3a9</relationship>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:12:00</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>8e99f22c836dae10009231b6feaad365</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>sysevent</sys_name>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_ui_list_u_sensor_b88c66e8832dae10009231b6feaad3a9_health_sentinel</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:12:00</sys_updated_on>
+            <sys_user/>
+            <view display_value="Health Sentinel" name="health_sentinel">b78db4608325ae10009231b6feaad366</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

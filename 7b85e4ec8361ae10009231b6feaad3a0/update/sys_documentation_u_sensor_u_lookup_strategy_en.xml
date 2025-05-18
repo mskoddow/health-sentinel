@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="u_lookup_strategy" label="Lookup strategy" language="en" table="u_sensor">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_lookup_strategy</element>
+            <help/>
+            <hint/>
+            <label>Lookup strategy</label>
+            <language>en</language>
+            <name>u_sensor</name>
+            <plural>Lookup strategys</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 04:49:56</sys_created_on>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Lookup strategy</sys_name>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_documentation_u_sensor_u_lookup_strategy_en</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 04:49:56</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

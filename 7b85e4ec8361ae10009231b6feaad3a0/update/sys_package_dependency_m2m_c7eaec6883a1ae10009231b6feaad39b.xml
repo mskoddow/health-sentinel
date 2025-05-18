@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_package_dependency_m2m">
+    <sys_package_dependency_m2m action="INSERT_OR_UPDATE">
+        <dependency display_value="Automated Action Interface" source="com.snc.automation">6660d8639820221055904c91e2b6541f</dependency>
+        <min_version>0.0.1</min_version>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-13 02:48:40</sys_created_on>
+        <sys_id>c7eaec6883a1ae10009231b6feaad39b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-13 02:48:40</sys_updated_on>
+    </sys_package_dependency_m2m>
+</record_update>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script/>
+        <description>Displays the content of a signal via UI Action "Simulate"</description>
+        <direct>false</direct>
+        <endpoint/>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	<g:evaluate>
+		var _strOut   = ' ';
+		var _strSysId = "${RP.getWindowProperties().get('sysparm_sys_id')}";
+		var _grSensor = new GlideRecord('u_sensor');
+
+		if (!GlideStringUtil.isEligibleSysID(_strSysId)) {
+			_strOut = 'That page was invoked with an invalid Sys ID!';
+		}
+		else if (!_grSensor.get(_strSysId)) {
+			_strOut = 'A Sensor with Sys ID = "' + _strSysId + '" could not be found!';
+		}
+		else if (!_grSensor.canRead()) {
+			_strOut = 'You are not allowed to access Sensor "' + _grSensor.name + '"!';
+		}
+		else {
+			GlideController.putGlobal('is_sensor_simulation', 'true');
+
+			var _strOut = 
+				'Due to technical issues no signal content could be created!';
+
+			var _objSignal = 
+				global.HealthSentinelUtils.executeScriptInScope(
+					_grSensor.getValue('sys_scope'),
+					'var current = param1;' + 
+					'result = ' + _grSensor.getValue('script'),
+					_grSensor
+				);
+
+			if (_objSignal !== null) {
+				_strOut = _objSignal.toString();
+			}
+		}
+	</g:evaluate>
+	<pre>${_strOut}</pre>
+	<div class="modal-footer"> 
+		<span class="pull-right"> 
+			<button class="btn btn-primary" onClick="GlideModal.get().destroy()">
+				${gs.getMessage('Close')}
+			</button> 
+		</span>  
+	</div>
+</j:jelly>]]></html>
+        <name>display_signal_content</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 16:34:33</sys_created_on>
+        <sys_id>3261b48983a92250009231b6feaad335</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>display_signal_content</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_ui_page_3261b48983a92250009231b6feaad335</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-16 11:15:37</sys_updated_on>
+    </sys_ui_page>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3261b48983a92250009231b6feaad335</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 16:34:32</sys_created_on>
+        <sys_id>aa81f00983a92250009231b6feaad3cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-14 16:34:32</sys_updated_on>
+        <table>sys_ui_page</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

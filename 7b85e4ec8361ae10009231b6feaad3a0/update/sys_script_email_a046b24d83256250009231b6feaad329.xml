@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>health_sentinel.render_email_content</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript(
+	current, 
+	template,
+    email, 
+	email_action,
+    event
+) {
+	var _objSignal = new global.Signal();
+
+	_objSignal.loadPayload(event.getValue('parm2'));
+
+	email.subject =
+		'[Health Sentinel] Findings for Sensor "' + _objSignal.getSensorName() + '"';
+
+	//Basic Infos
+	template.print(
+		'<table border="1" style="border-collapse:collapse;" cellpadding="3">' +
+		'<tbody>' +
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Instance&nbsp;Name</th>' +
+				'<td>' + gs.getProperty('instance_name') + '</td>' +
+			'</tr>' +
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Instance&nbsp;Type</th>' +
+				'<td>' + gs.getProperty('sn_appclient.instance_type') + '</td>' +
+			'</tr>' +				
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Sensor</th>' +
+				'<td>' +
+					'<a href="' + _objSignal.getSensorURL() + '" target="_blank">' + 
+						_objSignal.getSensorName() + 
+					'</a>' +
+				'</td>' +
+			'</tr>' +
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Severity</th>' +
+				'<td>' + _objSignal.getSensorSeverity() + '</td>' +
+			'</tr>' +
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Description</th>' +
+			'<td>' + _objSignal.getSensorDescription().replaceAll('\n', '<br>') + '</td>' +
+			'</tr>' +  
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Detection&nbsp;Time</th>' +
+				'<td>' + _objSignal.getDetectionTime() + '</td>' +
+			'</tr>' +  
+			'<tr>' +
+				'<th style="background-color:#eee" align="left">Findings</th>' +
+				'<td>' +
+					'<a href="' + _objSignal.getFindingsURL() + '" target="_blank">' + 
+						_objSignal.getFindingsTotal() + 
+					'</a>' +
+					' records in table ' + _objSignal.getSensorTableLabel() + 
+					' (' + _objSignal.getSensorTableName() + ')' +
+				'</td>' +
+			'</tr>' +
+		'</tbody>' +
+		'</table>'
+	);
+	
+
+	var _arrFindings = _objSignal.getFindingsData();
+
+
+	//print the example findings
+	if (Array.isArray(_arrFindings) && _arrFindings.length > 0) {
+		template.print(
+			'<p style="margin-top:30px;margin-bottom:30px;font-size:150%">' +
+				'First ' + _arrFindings.length + ' findings in detail' +
+			'</p>' +
+			'<table border="1" style="border-collapse:collapse;" cellpadding="3">' +
+				'<thead>' +
+					'<tr>' +
+						'<th style="background-color:#eee"></th>'
+		);
+
+		_arrFindings[0].columns.forEach(function(objColum) {
+			template.print(
+						'<th style="background-color:#eee" align="left">' +	
+							objColum.label + 
+						'</th>'
+			);
+		});
+
+		template.print(
+					'</tr>' + 
+				'</thead>' +
+				'<tbody>'
+		);
+
+		_arrFindings.forEach(function(objRow) {
+			template.print(
+					'<tr>'
+			);
+
+			objRow.columns.forEach(function(objColum, numIndex) {
+				if (numIndex === 0) {
+					template.print(
+							'<td style="background-color:#eee">' + 
+								'<a ' +
+									'href="' + objRow.url + '" ' +
+									'style="text-decoration:none" ' +
+									'target="_blank" ' +
+								'>' +
+									'&#x1F6C8;' +
+								'</a>' +
+							'</td>'
+					);
+				}
+
+				template.print(
+						'<td>' + objColum.value + '</td>'
+				);
+			});
+
+			template.print(
+					'</tr>'
+			);
+		});
+
+		template.print(
+				'</tbody>' +
+			'</table>'
+		);
+	}
+
+
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-15 02:50:25</sys_created_on>
+        <sys_id>a046b24d83256250009231b6feaad329</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>health_sentinel.render_email_content</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_script_email_a046b24d83256250009231b6feaad329</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 04:26:30</sys_updated_on>
+    </sys_script_email>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>a046b24d83256250009231b6feaad329</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-15 02:50:24</sys_created_on>
+        <sys_id>908ef2c583656250009231b6feaad336</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 02:50:24</sys_updated_on>
+        <table>sys_script_email</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

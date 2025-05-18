@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-13 02:48:45</sys_created_on>
+        <sys_id>ecfa20a883a1ae10009231b6feaad3b8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>u_sensor.health_sentinel.admin</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_security_acl display_value="u_sensor">28fa20a883a1ae10009231b6feaad3b4</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_ecfa20a883a1ae10009231b6feaad3b8</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-13 02:48:45</sys_updated_on>
+        <sys_user_role display_value="health_sentinel.admin" name="health_sentinel.admin">60fa20a883a1ae10009231b6feaad3af</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

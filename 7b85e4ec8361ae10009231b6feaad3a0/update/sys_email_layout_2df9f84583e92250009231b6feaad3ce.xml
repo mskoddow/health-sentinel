@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_email_layout">
+    <sys_email_layout action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <advanced_layout/>
+        <description/>
+        <layout><![CDATA[<p></p>
+<style type="text/css">
+* {
+  -webkit-text-size-adjust: none;
+}
+
+body {
+  margin: 0 auto !important;
+  padding: 0 !important;
+  font-family: Lato, Arial, sans-serif;
+}
+
+body,
+table,
+td,
+p,
+a {
+  -ms-text-size-adjust: 100% !important;
+  -webkit-text-size-adjust: 100% !important;
+}
+
+table,
+tr,
+td {
+  border-spacing: 0 !important;
+  mso-table-lspace: 0 !important;
+  mso-table-rspace: 0 !important;
+  border-collapse: collapse !important;
+  mso-line-height-rule: exactly !important;
+}
+  
+.notification-body td,
+.notification-body th {
+  padding: 3px;
+}
+</style>
+<div style="margin: 0 auto !important;" align="center">
+<table class="w100" style="width: 600px; background-color: #f7f7f9; margin: 0 auto !important; padding: 0px;" border="0" width="600" cellspacing="0" cellpadding="0" align="center" bgcolor="#F7F7F9">
+<tbody>
+<tr>
+<td style="background-color: #221900; background-image: url('Health_Sentinel_Email_Header.png'); background-size: cover; text-align: center; font-family: Arial, Tahoma, sans-serif; color: #425968; font-size: 13px; line-height: 14px;" align="center">
+<table style="border-spacing: 0; width: 100%;" border="0" width="600" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td width="140" height="98"></td>
+<td align="center" valign="bottom" height="98" style="height: 98px; vertical-align: middle;"><span style="font-family: verdana, geneva; font-size: 24pt; color: #ecf0f1;">Health Sentinel</span></td>
+<td width="140"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>
+<table border="0" width="600" cellspacing="0" cellpadding="0">
+<tbody>
+<tr><!-- Left-->
+<td valign="top" width="18">
+<table width="18" cellspacing="0">
+<tbody>
+<tr style="background: #221900;" height="48">
+<td></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td width="564">
+<table style="background: #221900; margin: 0px; padding: 0px;" border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td class="notification-body" style="text-align: left; background-color: #ffffff; padding: 24px 24px 24px 24px;" align="center">${notification:body}</td>
+</tr>
+</tbody>
+</table>
+</td>
+<!-- END CONTAINER --> <!-- Right-->
+<td valign="top" width="18">
+<table width="18" cellspacing="0">
+<tbody>
+<tr style="background: #251d00;" height="48">
+<td></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f7f7f9;" align="center" height="60">${NOTIF_PREFS}</td>
+</tr>
+<tr style="background-color: #251d00;">
+<td>
+<table style="background-color: #251d00;" border="0" cellspacing="0" cellpadding="0" width="100%">
+<tbody>
+<tr>
+<td style="background-color: #251d00; color: #fff;">
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr align="center">
+<td><span style="font-size: 12px; color: #fff;">version ${mail_script:health_sentinel.render_version}</span></td>
+</tr>
+<tr align="center">
+<td style="color: #ffffff; font-size: 12px; line-height: 18px; text-align: center; margin: 0 !important;">&copy; ${mail_script:health_sentinel.render_current_year} by <a style="color: #ffffff; font-size: 12px;" href="https://www.linkedin.com/in/maik-skoddow/">Maik Skoddow</a>.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>]]></layout>
+        <name>Standard Health Sentinel Email Layout</name>
+        <sys_class_name>sys_email_layout</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 17:16:41</sys_created_on>
+        <sys_id>2df9f84583e92250009231b6feaad3ce</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Standard Health Sentinel Email Layout</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_email_layout_2df9f84583e92250009231b6feaad3ce</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-14 17:39:28</sys_updated_on>
+    </sys_email_layout>
+</record_update>

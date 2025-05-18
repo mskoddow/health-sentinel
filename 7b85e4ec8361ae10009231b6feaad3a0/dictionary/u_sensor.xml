@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="disable_execute_now=true" db_object_id="43eaec6883a1ae10009231b6feaad38c" extends="sysauto_script" label="Sensor" max_length="40" name="u_sensor" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Description" mandatory="true" max_length="4000" name="u_description" type="string"/>
+        <element attributes="encode_utf8=false" default="74ab81a18325e250009231b6feaad3dd" label="Fired event" mandatory="true" max_length="32" name="u_fired_event" reference="sysevent_register" type="reference"/>
+        <element default="10" label="Included findings" mandatory="true" max_length="40" name="u_included_findings" type="integer"/>
+        <element attributes="edge_encryption_enabled=true" label="Last run" max_length="40" name="u_last_run" read_only="true" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Severity" mandatory="true" max_length="40" name="u_severity" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Critical" sequence="0" value="1"/>
+                <element inactive_on_update="false" label="Low" sequence="3" value="4"/>
+                <element inactive_on_update="false" label="Medium" sequence="2" value="3"/>
+                <element inactive_on_update="false" label="High" sequence="1" value="2"/>
+                <element inactive_on_update="false" label="Info" sequence="4" value="5"/>
+            </choice>
+        </element>
+        <element default="0" label="Findings threshold" mandatory="true" max_length="40" name="u_threshold" type="integer"/>
+        <element attributes="allow_related_list_query=true,condition_builder=v2,edge_encryption_enabled=true,extended_operators=VALCHANGES;CHANGESFROM;CHANGESTO;SAMEAS;NSAMEAS,readable=true,show_condition_count=true" dependent="u_table" dependent_on_field="u_table" label="Filter" mandatory="true" max_length="4000" name="u_filter" type="conditions" use_dependent_field="true"/>
+        <element choice="3" default="1" label="Lookup strategy" mandatory="true" max_length="40" name="u_lookup_strategy" type="integer">
+            <choice>
+                <element inactive_on_update="false" label="all findings" sequence="1" value="2"/>
+                <element inactive_on_update="false" label="findings since last run" sequence="0" value="1"/>
+            </choice>
+        </element>
+        <element hint="The contents of the fields specified here are transferred to the signal content from the findings in the table to be analyzed. The optional numerical value per field specifies the maximum length of the field's content. " label="Extracted fields" max_length="4000" name="u_extracted_fields" type="simple_name_values"/>
+        <element attributes="edge_encryption_enabled=true" label="Table" mandatory="true" max_length="80" name="u_table" type="string"/>
+        <index name="index">
+            <element name="u_fired_event"/>
+        </index>
+    </element>
+</database>

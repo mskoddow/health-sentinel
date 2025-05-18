@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_list parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" table="syslog_transaction" version="2" view="health_sentinel">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_created_on</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>5c5af62c836dae10009231b6feaad354</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>transaction_processing_time</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>dc5af62c836dae10009231b6feaad354</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>system_id</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>505af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>business_rule_count</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>d05af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>business_rule_time</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>545af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sql_count</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>d45af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sql_time</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>585af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>acl_time</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>d85af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>cpu_time</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>5c5af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>cpu_usage</element>
+            <list_id display_value="syslog_transaction" element="NULL" name="syslog_transaction" parent="u_sensor" relationship="180c26e8832dae10009231b6feaad388" sys_domain="global" view="b78db4608325ae10009231b6feaad366">d05af62c836dae10009231b6feaad354</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>9</position>
+            <sum>false</sum>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_id>dc5af62c836dae10009231b6feaad355</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>syslog_transaction</name>
+            <parent>u_sensor</parent>
+            <position/>
+            <relationship display_value="Executions">180c26e8832dae10009231b6feaad388</relationship>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 13:15:10</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>d05af62c836dae10009231b6feaad354</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>syslog_transaction</sys_name>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_ui_list_u_sensor_180c26e8832dae10009231b6feaad388_health_sentinel</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 13:15:10</sys_updated_on>
+            <sys_user/>
+            <view display_value="Health Sentinel" name="health_sentinel">b78db4608325ae10009231b6feaad366</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

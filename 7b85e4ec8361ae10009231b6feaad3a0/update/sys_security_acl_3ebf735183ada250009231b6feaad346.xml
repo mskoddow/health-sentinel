@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>false</admin_overrides>
+        <advanced>true</advanced>
+        <applies_to table="sys_metadata">sys_scope=javascript:HealthSentinelConst.APP_SYS_ID^EQ<item endquery="false" field="sys_scope" goto="false" newquery="false" operator="=" or="false" value="javascript:HealthSentinelConst.APP_SYS_ID"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </applies_to>
+        <condition/>
+        <controlled_by_refs/>
+        <decision_type>deny</decision_type>
+        <description>Allows changing Health Sentinel's application files only for users with the role "health_sentinel.admin"</description>
+        <local_or_existing>Local</local_or_existing>
+        <name>sys_metadata</name>
+        <operation display_value="write">write</operation>
+        <script><![CDATA[answer = global.HealthSentinelUtils.isHealthSentinelAdmin();]]></script>
+        <security_attribute/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-16 02:18:39</sys_created_on>
+        <sys_id>3ebf735183ada250009231b6feaad346</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>sys_metadata</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_security_acl_3ebf735183ada250009231b6feaad346</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-16 02:39:04</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3ebf735183ada250009231b6feaad346</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-16 02:18:35</sys_created_on>
+        <sys_id>e3c04c2183ada250009231b6feaad39c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-16 02:18:35</sys_updated_on>
+        <table>sys_security_acl</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

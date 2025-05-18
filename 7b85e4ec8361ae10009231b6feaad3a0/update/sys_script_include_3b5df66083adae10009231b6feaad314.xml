@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>global.Sensor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>Sensor</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var Sensor = Class.create();
+
+Sensor.prototype = {
+
+	initialize: function(
+		grSensor, 
+		isSimulation
+	) {
+		this._grSensor            = grSensor;
+		this._isSimulation        = isSimulation === true;
+		this._objSignalParameters = {};
+
+		if (!this._isSimulation) {
+			if (GlideController.exists('is_sensor_simulation')) {
+				this._isSimulation = true;
+			}
+		}
+    },
+
+
+	isValidRecord: function(
+
+	) {
+		var _isValid = 
+			typeof this._grSensor === 'object' &&
+			this._grSensor instanceof GlideRecord &&
+			this._grSensor.isValidRecord() &&
+			this._grSensor.getTableName() === 'u_sensor';
+
+		return _isValid;
+	},
+
+
+	isValidSensor: function(
+
+	) {
+		var _isValid = 
+			this.isValidRecord() &&
+			!this._grSensor.u_table.nil() &&
+			gs.tableExists(this._grSensor.getValue('u_table')) &&
+			!this._grSensor.u_filter.nil() &&
+			!this._grSensor.u_fired_event.nil() && 
+			this._grSensor.u_fired_event.getRefRecord() !== null &&
+			this._grSensor.u_fired_event.getRefRecord().isValidRecord();
+
+		return _isValid;	
+	},
+
+
+	isSimulation: function(
+
+	) {
+		return this._isSimulation;
+	},
+
+
+	addSignalParameter: function(
+		strKey, 
+		objValue
+	) {	
+		if (typeof strKey === 'string' && JSUtil.notNil(objValue)) {
+			this._objSignalParameters[strKey] = objValue;
+		}
+
+		return this;
+	},
+
+
+	isActive: function(
+
+	) {
+		return this._grSensor.getValue('active') === '1';
+	},
+
+
+	run: function(
+
+	) {
+		if (!this.isValidRecord()) {
+			global.HealthSentinelUtils.logError(
+				'Sensor.run',
+				'That Sensor object was not initialized with a valid ' +
+				'record from table "u_sensor"!'
+			);
+
+			return null;
+		}
+
+
+		var _strSensorName = this._grSensor.getValue('name') || '???';
+
+		if (!this.isValidSensor()) {
+			global.HealthSentinelUtils.logError(
+				'Sensor.run',
+				'[{0}] Sensor is not configured properly and therefore cannot be executed!',
+				_strSensorName
+			);
+
+			return null;
+		}
+		
+
+		if (!this._isSimulation &&
+			gs.getProperty('health_sentinel.is_active', '') !== 'true'
+		) {
+			global.HealthSentinelUtils.logError(
+				'Sensor.run',
+				'[{0}] Health Sentinel functionality is not activated ' +
+				'and therefore the sensor cannot be executed! Please check ' +
+				'system property "{1}"!',
+				_strSensorName, 
+				global.HealthSentinelConst.SYSTEM_PROPERTY_IS_ACTIVE
+			);
+
+			return null;
+		}
+
+
+		global.HealthSentinelUtils.logInfo(
+			'Sensor.run', '[{0}] Execute sensor ...', _strSensorName
+		);
+
+
+		try {
+			var _objSignal = new global.Signal();
+
+			_objSignal.setNodeName(global.HealthSentinelUtils.getShortNodeName());
+			_objSignal.setParameters(this._objSignalParameters);
+			_objSignal.setSensorName(_strSensorName);
+			_objSignal.setSensorDescription(this._grSensor.getValue('u_description') || '');
+			_objSignal.setSensorSysID(this._grSensor.getValue('sys_id'));
+			_objSignal.setSensorURL(
+				gs.getProperty('glide.servlet.uri') + this._grSensor.getLink(true)
+			);
+			_objSignal.setSensorSeverity(this._grSensor.getDisplayValue('u_severity') || '');
+
+
+			var _arrIncludedFindings  = [];
+			var _objUsedFields       = {};
+			var _grDbObject          = new GlideRecord('sys_db_object');
+			
+
+			var _strTableName = String(this._grSensor.getValue('u_table') || '');
+
+			if (!gs.tableExists(_strTableName)) {
+				global.HealthSentinelUtils.logError(
+					'Sensor.run',
+					'[{0}] table "{1}" does not exist in that instance!',
+					_strSensorName, _strTableName 
+				);
+
+				return null;
+			}
+
+			if (!_grDbObject.get('name', _strTableName)) {
+				global.HealthSentinelUtils.logError(
+					'Sensor.run',
+					'[{0}] It was not possible to load a corresponding record from table ' +
+					'"sys_db_object" for table "{1}"!',
+					_strSensorName, _strTableName 
+				);
+
+				return null;
+			}
+
+			_objSignal.setSensorTableName(_strTableName);
+			_objSignal.setSensorTableLabel(
+				global.HealthSentinelUtils.getTableLabel(_strTableName)
+			);
+
+
+			var _strTableFilter = String(this._grSensor.getValue('u_filter') || '');		
+
+			_objSignal.setSensorTableFilter(_strTableFilter);
+
+
+			var _returnAllFindings = 
+				this._grSensor.getValue('u_lookup_strategy') === '2';
+			
+			var _numThreshold = 
+				Number(this._grSensor.getValue('u_threshold') || 0);
+			
+			var _numIncludedFindings = 
+				Number(this._grSensor.getValue('u_included_findings') || 0);
+
+			var _strTimeSpanField = 
+				new GlideTableDescriptor(_strTableName).isValidField('sys_updated_on') ?
+					'sys_updated_on' : 
+					'sys_created_on';
+
+			var _strTableScope = 
+				_grDbObject.getValue('sys_scope');
+			
+
+			if (!_returnAllFindings && !this._grSensor.u_last_run.nil()) {
+				if (_strTableFilter.length > 0) {
+					_strTableFilter = _strTableFilter + '^';
+				}
+
+				_strTableFilter = _strTableFilter +
+					_strTimeSpanField + '>=' + this._grSensor.u_last_run.toString() + 
+					'^' + _strTimeSpanField + '<=' + (new GlideDateTime()).toString();
+			}
+
+			_objUsedFields[_strTimeSpanField] = '20';
+			
+
+			var _numFindings = Number(global.HealthSentinelUtils.executeScriptInScope(
+				_strTableScope,
+				"var _gaRecords = new GlideAggregate(param1);" +
+				"_gaRecords.addAggregate('COUNT');" +
+				"_gaRecords.addEncodedQuery(param2);" +
+				"_gaRecords.query();" +
+				"result = _gaRecords.next() ? _gaRecords.getAggregate('COUNT') : 0;",
+				_strTableName, _strTableFilter
+			));
+
+			if (_numFindings <= _numThreshold && !this._isSimulation) {
+				return false;
+			}
+
+
+			var _strExtractedFields = 
+				(this._grSensor.getValue('u_extracted_fields') || '').trim();
+			
+
+			if (_strExtractedFields !== '') {
+				try {
+					var _objExtractedFields = JSON.parse(_strExtractedFields);
+
+					for (var _strKey in _objExtractedFields) {
+						if (Object.prototype.hasOwnProperty.call(
+								_objExtractedFields, 
+								_strKey
+							)
+						) {
+							var _strField = String(_strKey).trim();
+							var _hasField = 
+								global.HealthSentinelUtils.executeScriptInScope(
+									_strTableScope,
+									"result = " + 
+									"(new GlideRecord(param1)).isValidField(param2)",
+									_strTableName, 
+									_strField
+								);
+
+							if (_hasField) {
+								var _strMaxCharacters = 
+									String(_objExtractedFields[_strKey]).trim();
+
+								var _numMaxCharacters = 
+									_strExtractedFields !== '' ?
+										parseInt(_strMaxCharacters, 10) :
+										0;
+
+								if (isNaN(_numMaxCharacters) || _numMaxCharacters < 1) {
+									_numMaxCharacters = 500;
+								}
+
+								_objUsedFields[_strField] = _numMaxCharacters;
+							}
+						}
+					}
+				}
+				catch (e) {
+					global.HealthSentinelUtils.logFatal(
+						'Sensor.run',
+						'[{0}] Unexptected JavaScript error when trying to process the ' +
+						'value of field "Extracted fields"!',
+						_strSensorName, e
+					);
+				}
+			}
+
+			if (_numIncludedFindings > 100) {
+				_numIncludedFindings = 100;
+			}
+
+			if (_numIncludedFindings > 0) {
+				_arrIncludedFindings = global.HealthSentinelUtils.executeScriptInScope(
+					_strTableScope,
+					"result = [];" +
+					"var _gr = new GlideRecord(param1);" +
+					"_gr.addEncodedQuery(param2);" +
+					"_gr.orderByDesc(param3);" +
+					"_gr.setLimit(param4);" +
+					"_gr.query();" + 
+					"while (_gr.next()) {" +
+					"  var _arrColumns = [];" +
+					"  var _objRow = {};" +
+					"  for (var _strFieldName in param5) {" +
+					"     var _strFieldValue = _gr.getDisplayValue(_strFieldName);" +
+					"     var _numCharacters = param5[_strFieldName] || 500;" +
+					"     var _objColumn = {" +
+					"       name:  _strFieldName," +
+					"       label: _gr.getElement(_strFieldName).getLabel()," +
+					"       value: _strFieldValue.substring(0, _numCharacters)" +
+					"     };" +
+					"     _arrColumns.push(_objColumn);" +
+					"  };" +
+					"  result.push({" +
+					"    sys_id : _gr.getUniqueValue()," +
+					"    url    : gs.getProperty('glide.servlet.uri') + _gr.getLink(true)," +
+					"    columns: _arrColumns" +
+					"  });" +
+					"}",
+					_strTableName, 
+					_strTableFilter, 
+					_strTimeSpanField, 
+					_numIncludedFindings, 
+					_objUsedFields
+				);
+			}			
+
+			_objSignal.setFindingsTotal(Number(_numFindings));
+
+			_objSignal.setFindingsURL(
+				gs.getProperty('glide.servlet.uri') + 
+				'now/nav/ui/classic/params/target/' +
+				_strTableName + '_list.do' + 
+				encodeURIComponent('?sysparm_query=' + encodeURIComponent(_strTableFilter))
+			);
+
+			_objSignal.setFindingsData(_arrIncludedFindings);
+
+			
+			if (!this._isSimulation) {
+				//fire signal via queuing into "sysevent" table
+				gs.eventQueue(
+					this._grSensor.u_fired_event.event_name.toString(),
+					null,
+					'health_sentinel_sensor_' + this._grSensor.getValue('sys_id'),
+					_objSignal.toString()
+				);
+			}
+
+			return _objSignal;
+		}
+		catch (e) {
+			global.HealthSentinelUtils.logFatal(
+				'Sensor.run',
+				'[{0}] Unexptected JavaScript error when running sensor!',
+				_strSensorName, e
+			);
+
+			return null;
+		}
+		finally {
+			if (!this._isSimulation && this.isActive()) {
+				this._grSensor.u_last_run = new GlideDateTime();
+
+				this._grSensor.autoSysFields(false);
+				this._grSensor.setWorkflow(false);
+				this._grSensor.update();
+			}
+		}
+	},
+
+    type: 'Sensor'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-13 13:38:57</sys_created_on>
+        <sys_id>3b5df66083adae10009231b6feaad314</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>Sensor</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_script_include_3b5df66083adae10009231b6feaad314</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-17 04:57:09</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3b5df66083adae10009231b6feaad314</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-13 13:38:57</sys_created_on>
+        <sys_id>70cf7eec836dae10009231b6feaad364</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-13 13:38:57</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

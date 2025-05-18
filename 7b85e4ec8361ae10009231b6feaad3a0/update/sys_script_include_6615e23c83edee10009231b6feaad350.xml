@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.HealthSentinelUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>HealthSentinelUtils</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var HealthSentinelUtils = Class.create();
+
+
+HealthSentinelUtils.isActive = function(
+
+) {
+	var _strIsActive =
+		gs.getProperty(global.HealthSentinelConst.SYSTEM_PROPERTY_IS_ACTIVE, '');
+
+	return _strIsActive === 'true';
+};
+
+
+HealthSentinelUtils.hasRole = function(
+	strRoleName
+) {
+	var _arrRoles = gs.getUser().getRoles();
+
+	return _arrRoles.indexOf(strRoleName) > -1;
+};
+
+
+HealthSentinelUtils.isHealthSentinelUser = function(
+
+) {
+	return HealthSentinelUtils.hasRole(global.HealthSentinelConst.ROLE_USER);
+};
+
+
+HealthSentinelUtils.isHealthSentinelAdmin = function(
+
+) {
+	return HealthSentinelUtils.hasRole(global.HealthSentinelConst.ROLE_ADMIN);
+};
+
+HealthSentinelUtils.getShortNodeName = function(
+	
+) {
+	var _strFullNodeName   = global.GlideServlet.getSystemID();
+	var _numSeparatorIndex = _strFullNodeName.indexOf(':');	
+	
+	return _numSeparatorIndex > 0 ?
+		_strFullNodeName.substr(_numSeparatorIndex + 1) : 
+		_strFullNodeName;		
+};
+
+
+HealthSentinelUtils.getTableLabel = function(
+	strTableName
+) {
+	var _grDocumentation = new GlideRecord('sys_documentation');
+
+	_grDocumentation.addQuery('name', strTableName);
+	_grDocumentation.addQuery('language', gs.getSession().getLanguage());
+	_grDocumentation.addNullQuery('element');
+	_grDocumentation.setLimit(1);
+	_grDocumentation.query();
+
+	if (_grDocumentation.next()) {				
+		return _grDocumentation.getValue('label');
+	}
+
+	return '';
+};
+
+
+HealthSentinelUtils.executeScriptInScope = function(
+	strScope, 
+	strScript, 
+	param1, 
+	param2, 
+	param3,
+	param4,
+	param5
+) {
+	var _objEval         = new GlideScopedEvaluator();
+	var _grScriptInclude = new GlideRecord('sys_script_include');
+	
+	//get this Script Include
+	_grScriptInclude.get('6615e23c83edee10009231b6feaad350'); 
+
+	_grScriptInclude.script    = strScript; 
+	_grScriptInclude.sys_scope = strScope;
+	
+	_objEval.putVariable('result', null);
+	_objEval.putVariable('param1', param1);
+	_objEval.putVariable('param2', param2);
+	_objEval.putVariable('param3', param3);
+	_objEval.putVariable('param4', param4);
+	_objEval.putVariable('param5', param5);
+	
+	_objEval.evaluateScript(_grScriptInclude, 'script');
+	
+	return _objEval.getVariable('result');
+};
+
+
+/*
+* Writes a log message to system log of type 'info' and with a given scope.
+*/
+HealthSentinelUtils.logInfo = function(
+	strScope, 
+	strMessage
+) {
+	var _strMessage = HealthSentinelUtils._getLogMessageStr(arguments);
+
+	HealthSentinelUtils._insertSysLogRow('0', strScope, _strMessage);
+
+	return _strMessage;
+};
+
+
+/*
+* Writes a log message to system log of type 'warn' and with a given scope.
+*/
+HealthSentinelUtils.logWarning = function(
+	strScope, 
+	strMessage
+) {
+	var _strMessage = HealthSentinelUtils._getLogMessageStr(arguments);
+
+	HealthSentinelUtils._insertSysLogRow('1', strScope, _strMessage);
+
+	return _strMessage;
+};
+
+
+/*
+* Writes a log message to system log of type 'error' and with a given scope.
+*/
+HealthSentinelUtils.logError = function(
+	strScope, 
+	strMessage,
+	e
+) {
+	var _strMessage = HealthSentinelUtils._getLogMessageStr(arguments);
+
+	HealthSentinelUtils._insertSysLogRow('2', strScope, _strMessage);
+
+	return _strMessage;
+};
+
+
+/*
+ * Writes a log message to system log of type 'error' and with a given scope. Addtionally 
+ * provided exception {e} is written to system log.
+*/
+HealthSentinelUtils.logFatal = function(
+	strScope, 
+	strMessage, 
+	e
+) {
+	var _strMessage = HealthSentinelUtils._getLogMessageStr(arguments);
+
+	HealthSentinelUtils._insertSysLogRow('3', strScope, _strMessage);
+
+	return _strMessage;
+};
+
+
+HealthSentinelUtils._getLogMessageStr = function(
+	arrArguments
+) {
+	var _args       = [];
+	var _arrMessage = [];
+	var _e;
+
+	for (var numIndex = 0; numIndex < arrArguments.length; numIndex++) {
+		if (arrArguments[numIndex] !== null && arrArguments[numIndex] !== 'undefined') {
+			if (arrArguments[numIndex] instanceof Error	||
+				String(arrArguments[numIndex]).startsWith('org.mozilla.javascript.')
+			) {
+				_e = arrArguments[numIndex];
+			}
+			else {
+				_args.push(arrArguments[numIndex]);
+			}
+		}
+	}
+  
+
+	var _strMessage = 
+		_args.length < 2 ? 
+			'???' : 
+			_args[1].toString();
+  
+	for (var _numIndex = 2; _numIndex < _args.length; _numIndex++) {
+		var _strValue = 
+			JSUtil.nil(_args[_numIndex]) ? 
+				'' : 
+				_args[_numIndex].toString();
+		
+		_strMessage = 
+			_strMessage.replace(
+				new RegExp('{' + (_numIndex - 2) + '}', 'g'), 
+				_strValue
+			);
+	}
+
+	_arrMessage.push(_strMessage);
+
+  
+	if (_e) {
+		_arrMessage.push('\n--> ');
+		
+		if (_e instanceof Error) {
+			_arrMessage.push(_e.message);
+			_arrMessage.push('\n');
+
+			if (_e.stack) {
+				_arrMessage.push(
+					_e.stack
+						.split('\n')
+						.slice(0, 4)
+						.filter(function(line) {
+							return line.trim().length > 0;
+						})
+						.map(function (line) {
+							return '---> ' + line.trim();
+						})
+						.join('\n')
+				);
+			}
+		}
+		else {
+			_arrMessage.push(String(_e));
+		}
+	}
+
+	return _arrMessage.join('');
+};
+
+
+HealthSentinelUtils._insertSysLogRow = function(
+	strLevel, 
+	strScope,
+	strMessage
+) {	
+	var _grLog = new GlideRecord('syslog');
+	
+	_grLog.setValue('level', strLevel);
+	_grLog.setValue('source', strScope);
+	_grLog.setValue('message', strMessage);
+	_grLog.insert();
+};
+
+
+HealthSentinelUtils.prototype = {
+    type: 'HealthSentinelUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 06:23:34</sys_created_on>
+        <sys_id>6615e23c83edee10009231b6feaad350</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>HealthSentinelUtils</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_script_include_6615e23c83edee10009231b6feaad350</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 14:25:21</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>6615e23c83edee10009231b6feaad350</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-14 06:23:32</sys_created_on>
+        <sys_id>14b5227c83edee10009231b6feaad333</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-14 06:23:32</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="Signal contents" section_id="c763c9288325ae10009231b6feaad372" sys_domain="global" table="u_sensor" version="3" view="health_sentinel">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_fired_event</element>
+            <position>0</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-15 13:36:21</sys_created_on>
+            <sys_id>1e52555d8321a250009231b6feaad365</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Signal contents" display_value="Signal contents" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">c763c9288325ae10009231b6feaad372</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-15 13:36:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_included_findings</element>
+            <position>1</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-15 13:36:21</sys_created_on>
+            <sys_id>d652555d8321a250009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Signal contents" display_value="Signal contents" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">c763c9288325ae10009231b6feaad372</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-15 13:36:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-15 13:36:21</sys_created_on>
+            <sys_id>5e52555d8321a250009231b6feaad366</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Signal contents" display_value="Signal contents" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">c763c9288325ae10009231b6feaad372</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-15 13:36:21</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>3</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-15 13:36:21</sys_created_on>
+            <sys_id>d252555d8321a250009231b6feaad367</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Signal contents" display_value="Signal contents" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">c763c9288325ae10009231b6feaad372</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-15 13:36:21</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_extracted_fields</element>
+            <position>4</position>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-15 13:36:21</sys_created_on>
+            <sys_id>5a52555d8321a250009231b6feaad367</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Signal contents" display_value="Signal contents" name="u_sensor" sys_domain="global" view="b78db4608325ae10009231b6feaad366">c763c9288325ae10009231b6feaad372</sys_ui_section>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-15 13:36:21</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption>Signal contents</caption>
+            <header>false</header>
+            <name>u_sensor</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>maik.skoddow</sys_created_by>
+            <sys_created_on>2025-05-13 04:35:42</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>c763c9288325ae10009231b6feaad372</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>u_sensor</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+            <sys_update_name>sys_ui_section_c763c9288325ae10009231b6feaad372</sys_update_name>
+            <sys_updated_by>maik.skoddow</sys_updated_by>
+            <sys_updated_on>2025-05-13 04:35:42</sys_updated_on>
+            <sys_user/>
+            <title>false</title>
+            <view display_value="Health Sentinel" name="health_sentinel">b78db4608325ae10009231b6feaad366</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

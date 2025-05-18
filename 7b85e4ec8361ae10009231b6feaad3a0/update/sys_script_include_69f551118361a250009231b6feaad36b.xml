@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>global.HealthSentinelConst</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>HealthSentinelConst</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[var HealthSentinelConst = Class.create();
+
+
+HealthSentinelConst.APP_SYS_ID = '7b85e4ec8361ae10009231b6feaad3a0';
+
+HealthSentinelConst.ROLE_USER  = 'health_sentinel.user';
+HealthSentinelConst.ROLE_ADMIN = 'health_sentinel.admin';
+
+HealthSentinelConst.SYSTEM_PROPERTY_IS_ACTIVE = 'health_sentinel.is_active';
+
+HealthSentinelConst.prototype = {
+    type: 'HealthSentinelConst'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-15 13:54:37</sys_created_on>
+        <sys_id>69f551118361a250009231b6feaad36b</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>HealthSentinelConst</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>sys_script_include_69f551118361a250009231b6feaad36b</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 14:25:03</sys_updated_on>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>69f551118361a250009231b6feaad36b</id>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-15 13:54:37</sys_created_on>
+        <sys_id>358651118361a250009231b6feaad36f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-15 13:54:37</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>
