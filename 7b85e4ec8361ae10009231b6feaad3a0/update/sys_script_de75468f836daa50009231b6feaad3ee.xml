@@ -3,22 +3,22 @@
         <abort_action>false</abort_action>
         <access>package_private</access>
         <action_delete>false</action_delete>
-        <action_insert>false</action_insert>
+        <action_insert>true</action_insert>
         <action_query>false</action_query>
-        <action_update>false</action_update>
+        <action_update>true</action_update>
         <active>true</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>u_sensor</collection>
-        <condition> gs.getSession().isInteractive() &amp;&amp; !global.HealthSentinelUtils.isActive()</condition>
+        <condition/>
         <description/>
         <execute_function>false</execute_function>
         <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Warn if activated Sensor will not run</name>
+        <name>Force Sensor Capturing</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -27,45 +27,40 @@
         <rest_service_text/>
         <rest_variables/>
         <role_conditions/>
-        <script><![CDATA[(function executeRule() {
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
 
-	gs.addErrorMessage(
-		gs.getMessage(
-			'Even if this sensor is enabled, it will not run because the entire ' +
-			'functionality is currently disabled (see system ' +
-			'property "{0}" to activate)!',
-			[global.HealthSentinelConst.SYSTEM_PROPERTY_IS_ACTIVE]
-		)
-	);
+	var _objUpdateManager = new GlideUpdateManager2();
+	
+	_objUpdateManager.saveRecord(current);
 
-})();]]></script>
+})(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-13 05:56:55</sys_created_on>
+        <sys_created_on>2025-05-21 03:53:59</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>8065512083a5ae10009231b6feaad38d</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Warn if activated Sensor will not run</sys_name>
+        <sys_id>de75468f836daa50009231b6feaad3ee</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Force Sensor Capturing</sys_name>
         <sys_overrides/>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
-        <sys_update_name>sys_script_8065512083a5ae10009231b6feaad38d</sys_update_name>
+        <sys_update_name>sys_script_de75468f836daa50009231b6feaad3ee</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-21 06:03:06</sys_updated_on>
+        <sys_updated_on>2025-05-21 03:53:59</sys_updated_on>
         <template/>
-        <when>before_display</when>
+        <when>after</when>
     </sys_script>
-    <sys_translated_text action="delete_multiple" query="documentkey=8065512083a5ae10009231b6feaad38d"/>
+    <sys_translated_text action="delete_multiple" query="documentkey=de75468f836daa50009231b6feaad3ee"/>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
-        <id>8065512083a5ae10009231b6feaad38d</id>
+        <id>de75468f836daa50009231b6feaad3ee</id>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-13 05:56:55</sys_created_on>
-        <sys_id>340691ac8365ae10009231b6feaad364</sys_id>
+        <sys_created_on>2025-05-21 03:53:58</sys_created_on>
+        <sys_id>b196c24f836daa50009231b6feaad33d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-13 05:56:55</sys_updated_on>
+        <sys_updated_on>2025-05-21 03:53:58</sys_updated_on>
         <table>sys_script</table>
         <use_es_latest>true</use_es_latest>
     </sys_es_latest_script>

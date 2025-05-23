@@ -198,10 +198,7 @@ Sensor.prototype = {
 				new GlideTableDescriptor(_strTableName).isValidField('sys_updated_on') ?
 					'sys_updated_on' : 
 					'sys_created_on';
-
-			var _strTableScope = 
-				_grDbObject.getValue('sys_scope');
-			
+		
 
 			if (!_returnAllFindings && !this._grSensor.u_last_run.nil()) {
 				if (_strTableFilter.length > 0) {
@@ -214,27 +211,27 @@ Sensor.prototype = {
 			}
 
 			_objUsedFields[_strTimeSpanField] = '20';
-			
 
-			var _numFindings = Number(global.HealthSentinelUtils.executeScriptInScope(
-				_strTableScope,
-				"var _gaRecords = new GlideAggregate(param1);" +
-				"_gaRecords.addAggregate('COUNT');" +
-				"_gaRecords.addEncodedQuery(param2);" +
-				"_gaRecords.query();" +
-				"result = _gaRecords.next() ? _gaRecords.getAggregate('COUNT') : 0;",
-				_strTableName, _strTableFilter
-			));
+
+			var _gaRecords = new GlideAggregate(_strTableName);
+			
+			_gaRecords.addAggregate('COUNT');
+			_gaRecords.addEncodedQuery(_strTableFilter);
+			_gaRecords.query();
+			
+			var _numFindings = 
+				_gaRecords.next() ? 
+					Number(_gaRecords.getAggregate('COUNT')) : 
+					0;
 
 			if (_numFindings <= _numThreshold && !this._isSimulation) {
-				return false;
+				return _objSignal;
 			}
 
 
 			var _strExtractedFields = 
 				(this._grSensor.getValue('u_extracted_fields') || '').trim();
 			
-
 			if (_strExtractedFields !== '') {
 				try {
 					var _objExtractedFields = JSON.parse(_strExtractedFields);
@@ -247,13 +244,8 @@ Sensor.prototype = {
 						) {
 							var _strField = String(_strKey).trim();
 							var _hasField = 
-								global.HealthSentinelUtils.executeScriptInScope(
-									_strTableScope,
-									"result = " + 
-									"(new GlideRecord(param1)).isValidField(param2)",
-									_strTableName, 
-									_strField
-								);
+								new GlideTableDescriptor(_strTableName)
+									.isValidField(_strField);
 
 							if (_hasField) {
 								var _strMaxCharacters = 
@@ -288,39 +280,44 @@ Sensor.prototype = {
 			}
 
 			if (_numIncludedFindings > 0) {
-				_arrIncludedFindings = global.HealthSentinelUtils.executeScriptInScope(
-					_strTableScope,
-					"result = [];" +
-					"var _gr = new GlideRecord(param1);" +
-					"_gr.addEncodedQuery(param2);" +
-					"_gr.orderByDesc(param3);" +
-					"_gr.setLimit(param4);" +
-					"_gr.query();" + 
-					"while (_gr.next()) {" +
-					"  var _arrColumns = [];" +
-					"  var _objRow = {};" +
-					"  for (var _strFieldName in param5) {" +
-					"     var _strFieldValue = _gr.getDisplayValue(_strFieldName);" +
-					"     var _numCharacters = param5[_strFieldName] || 500;" +
-					"     var _objColumn = {" +
-					"       name:  _strFieldName," +
-					"       label: _gr.getElement(_strFieldName).getLabel()," +
-					"       value: _strFieldValue.substring(0, _numCharacters)" +
-					"     };" +
-					"     _arrColumns.push(_objColumn);" +
-					"  };" +
-					"  result.push({" +
-					"    sys_id : _gr.getUniqueValue()," +
-					"    url    : gs.getProperty('glide.servlet.uri') + _gr.getLink(true)," +
-					"    columns: _arrColumns" +
-					"  });" +
-					"}",
-					_strTableName, 
-					_strTableFilter, 
-					_strTimeSpanField, 
-					_numIncludedFindings, 
-					_objUsedFields
-				);
+				var _grFinding = new GlideRecord(_strTableName);
+
+				_grFinding.addEncodedQuery(_strTableFilter);
+				_grFinding.orderByDesc(_strTimeSpanField);
+				_grFinding.setLimit(_numIncludedFindings);
+				_grFinding.query();
+
+				while (_grFinding.next()) {
+					var _arrColumns = [];
+
+					for (var _strFieldName in _objUsedFields) {
+						if (Object.prototype.hasOwnProperty.call(
+								_objUsedFields, 
+								_strFieldName
+							)
+						) {
+							var _strFieldValue = _grFinding.getDisplayValue(_strFieldName);
+							var _numCharacters = _objUsedFields[_strFieldName] || 500;
+
+							var _objColumn = {
+								name : _strFieldName,
+								label: _grFinding.getElement(_strFieldName).getLabel(),
+								value: _strFieldValue.substring(0, _numCharacters)
+							};
+
+							_arrColumns.push(_objColumn);
+						}
+					}
+
+					_arrIncludedFindings.push({
+						sys_id:
+							_grFinding.getUniqueValue(),
+						url:
+							gs.getProperty('glide.servlet.uri') + _grFinding.getLink(true),
+						columns:
+							_arrColumns
+					});
+				}
 			}			
 
 			_objSignal.setFindingsTotal(Number(_numFindings));
@@ -373,14 +370,14 @@ Sensor.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-13 13:38:57</sys_created_on>
         <sys_id>3b5df66083adae10009231b6feaad314</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Sensor</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_3b5df66083adae10009231b6feaad314</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-17 04:57:09</sys_updated_on>
+        <sys_updated_on>2025-05-21 08:10:16</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>3b5df66083adae10009231b6feaad314</id>

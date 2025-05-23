@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>global.HealthSentinelUtils</api_name>
         <caller_access/>
@@ -72,37 +72,6 @@ HealthSentinelUtils.getTableLabel = function(
 	}
 
 	return '';
-};
-
-
-HealthSentinelUtils.executeScriptInScope = function(
-	strScope, 
-	strScript, 
-	param1, 
-	param2, 
-	param3,
-	param4,
-	param5
-) {
-	var _objEval         = new GlideScopedEvaluator();
-	var _grScriptInclude = new GlideRecord('sys_script_include');
-	
-	//get this Script Include
-	_grScriptInclude.get('6615e23c83edee10009231b6feaad350'); 
-
-	_grScriptInclude.script    = strScript; 
-	_grScriptInclude.sys_scope = strScope;
-	
-	_objEval.putVariable('result', null);
-	_objEval.putVariable('param1', param1);
-	_objEval.putVariable('param2', param2);
-	_objEval.putVariable('param3', param3);
-	_objEval.putVariable('param4', param4);
-	_objEval.putVariable('param5', param5);
-	
-	_objEval.evaluateScript(_grScriptInclude, 'script');
-	
-	return _objEval.getVariable('result');
 };
 
 
@@ -263,14 +232,14 @@ HealthSentinelUtils.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-14 06:23:34</sys_created_on>
         <sys_id>6615e23c83edee10009231b6feaad350</sys_id>
-        <sys_mod_count>7</sys_mod_count>
+        <sys_mod_count>11</sys_mod_count>
         <sys_name>HealthSentinelUtils</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_6615e23c83edee10009231b6feaad350</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-15 14:25:21</sys_updated_on>
+        <sys_updated_on>2025-05-21 05:45:07</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>6615e23c83edee10009231b6feaad350</id>

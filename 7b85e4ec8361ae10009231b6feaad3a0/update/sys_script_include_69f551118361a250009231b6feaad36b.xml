@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>global.HealthSentinelConst</api_name>
         <caller_access/>
-        <client_callable>false</client_callable>
+        <client_callable>true</client_callable>
         <description/>
         <mobile_callable>false</mobile_callable>
         <name>HealthSentinelConst</name>
-        <sandbox_callable>false</sandbox_callable>
+        <sandbox_callable>true</sandbox_callable>
         <script><![CDATA[var HealthSentinelConst = Class.create();
 
 
@@ -26,14 +26,14 @@ HealthSentinelConst.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-15 13:54:37</sys_created_on>
         <sys_id>69f551118361a250009231b6feaad36b</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>HealthSentinelConst</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_69f551118361a250009231b6feaad36b</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-15 14:25:03</sys_updated_on>
+        <sys_updated_on>2025-05-21 06:06:58</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>69f551118361a250009231b6feaad36b</id>

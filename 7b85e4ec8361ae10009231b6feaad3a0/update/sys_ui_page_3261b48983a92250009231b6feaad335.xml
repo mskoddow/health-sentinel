@@ -8,7 +8,6 @@
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 	<g:evaluate>
-		var _strOut   = ' ';
 		var _strSysId = "${RP.getWindowProperties().get('sysparm_sys_id')}";
 		var _grSensor = new GlideRecord('u_sensor');
 
@@ -24,20 +23,16 @@
 		else {
 			GlideController.putGlobal('is_sensor_simulation', 'true');
 
+			var _objEval = new GlideScopedEvaluator();
+
+			_objEval.putVariable('current', _grSensor);		
+
+			var _objSignal = _objEval.evaluateScript(_grSensor, 'script');
+			
 			var _strOut = 
-				'Due to technical issues no signal content could be created!';
-
-			var _objSignal = 
-				global.HealthSentinelUtils.executeScriptInScope(
-					_grSensor.getValue('sys_scope'),
-					'var current = param1;' + 
-					'result = ' + _grSensor.getValue('script'),
-					_grSensor
-				);
-
-			if (_objSignal !== null) {
-				_strOut = _objSignal.toString();
-			}
+				_objSignal !== null ?
+					_objSignal.toString() :
+					'Due to technical issues no signal content could be created!';
 		}
 	</g:evaluate>
 	<pre>${_strOut}</pre>
@@ -55,14 +50,14 @@
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-14 16:34:33</sys_created_on>
         <sys_id>3261b48983a92250009231b6feaad335</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>display_signal_content</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_ui_page_3261b48983a92250009231b6feaad335</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-16 11:15:37</sys_updated_on>
+        <sys_updated_on>2025-05-21 05:56:17</sys_updated_on>
     </sys_ui_page>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>3261b48983a92250009231b6feaad335</id>

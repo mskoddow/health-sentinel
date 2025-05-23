@@ -15,7 +15,7 @@
         <condition> gs.getSession().isInteractive() &amp;&amp; !global.HealthSentinelUtils.isHealthSentinelAdmin() &amp;&amp; global.HealthSentinelUtils.isHealthSentinelUser()</condition>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="u_sensor">sys_scope=javascript:HealthSentinelConst.APP_SYS_ID^EQ<item endquery="false" field="sys_scope" goto="false" newquery="false" operator="=" or="false" value="javascript:HealthSentinelConst.APP_SYS_ID"/>
+        <filter_condition table="u_sensor">sys_scope=javascript:global.HealthSentinelConst.APP_SYS_ID^EQ<item endquery="false" field="sys_scope" goto="false" newquery="false" operator="=" or="false" value="javascript:global.HealthSentinelConst.APP_SYS_ID"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter_condition>
         <is_rest>false</is_rest>
@@ -55,7 +55,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>344c40e183eda250009231b6feaad32c</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>Info about usage of OOTB sensors</sys_name>
         <sys_overrides/>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
@@ -63,7 +63,7 @@
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_344c40e183eda250009231b6feaad32c</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-16 03:23:35</sys_updated_on>
+        <sys_updated_on>2025-05-21 06:01:30</sys_updated_on>
         <template/>
         <when>before_display</when>
     </sys_script>
