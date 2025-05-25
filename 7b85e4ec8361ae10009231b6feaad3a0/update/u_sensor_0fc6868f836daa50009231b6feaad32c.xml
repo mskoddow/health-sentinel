@@ -6,7 +6,7 @@
         <conditional>false</conditional>
         <entered_time>1970-01-01 00:00:00</entered_time>
         <max_drift/>
-        <name>New Application Version available</name>
+        <name>New Store Application Version available</name>
         <offset/>
         <offset_type>0</offset_type>
         <run_as/>
@@ -22,26 +22,28 @@
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-21 04:07:41</sys_created_on>
         <sys_id>0fc6868f836daa50009231b6feaad32c</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>New Application Version available</sys_name>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>New Store Application Version available</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>u_sensor_0fc6868f836daa50009231b6feaad32c</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-21 05:58:24</sys_updated_on>
+        <sys_updated_on>2025-05-25 13:19:00</sys_updated_on>
         <time_zone/>
-        <u_description>It scans the "sys_store_app" table to detect whether the value in "latest_version" differs from the value in "version". If so, the related applications can be updated.&#13;
-&#13;
-PLEASE NOTE&#13;
-To identify the corresponding query, "Not the Same As" must be selected, which is not an option in the Query Builder. However, if the respective encoded query is entered directly into the "Filter" field, the query can be submitted even if it cannot be displayed correctly in the Condition Builder. Therefore, do not change the select box for the operator field. It appears empty, even though an operator is set behind the scenes.</u_description>
+        <u_description>Scans the "sys_store_app" table to identify store apps whose "latest_version" differs from the value in "version". If so, the related store applications can be updated.</u_description>
         <u_extracted_fields>{"name":"100","scope":"40","version":"40","latest_version":"40"}</u_extracted_fields>
-        <u_filter table="sys_store_app">versionNSAMEASlatest_version<item endquery="false" field="version" goto="false" newquery="false" operator="NSAMEAS" or="false" value="latest_version"/>
+        <u_filter table="sys_store_app">versionNSAMEASlatest_version^update_available=true<item endquery="false" field="version" goto="false" newquery="false" operator="NSAMEAS" or="false" value="latest_version"/>
+            <item endquery="false" field="update_available" goto="false" newquery="false" operator="=" or="false" value="true"/>
         </u_filter>
         <u_fired_event display_value="health_sentinel.generic">74ab81a18325e250009231b6feaad3dd</u_fired_event>
         <u_included_findings>10</u_included_findings>
         <u_last_run/>
         <u_lookup_strategy>2</u_lookup_strategy>
+        <u_notes>Adjust the values below according to your instance type and your requirements and  decide on a practical execution frequency!&#13;
+&#13;
+PLEASE NOTE&#13;
+To identify the corresponding query, "Not the Same As" must be selected, which is not an option in the Query Builder. However, if the respective encoded query is entered directly into the "Filter" field, the query can be submitted even if it cannot be displayed correctly in the Condition Builder. Therefore, do not change the select box for the operator field. It appears empty, even though an operator is set behind the scenes. Click the "Preview" button to validate the findings.</u_notes>
         <u_severity>5</u_severity>
         <u_table>sys_store_app</u_table>
         <u_threshold>0</u_threshold>

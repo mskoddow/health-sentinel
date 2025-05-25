@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_sensor">
+    <u_sensor action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Errors in the syslog Table</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2025-05-24 07:00:12</run_start>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[new global.Sensor(current).run(); ]]></script>
+        <sys_class_name>u_sensor</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-24 07:06:06</sys_created_on>
+        <sys_id>c3fd86cc837dee50009231b6feaad3b8</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Errors in the syslog Table</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>u_sensor_c3fd86cc837dee50009231b6feaad3b8</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-25 13:50:35</sys_updated_on>
+        <time_zone/>
+        <u_description>It detects whether the number of errors in the syslog table has exceeded the configured threshold since the last run time.</u_description>
+        <u_extracted_fields>{"level":"20","source":"100","message":"200"}</u_extracted_fields>
+        <u_filter table="syslog">levelIN2,3<item display_value="2,3" endquery="false" field="level" goto="false" newquery="false" operator="IN" or="false" value="2,3"/>
+        </u_filter>
+        <u_fired_event display_value="health_sentinel.generic">74ab81a18325e250009231b6feaad3dd</u_fired_event>
+        <u_included_findings>10</u_included_findings>
+        <u_last_run/>
+        <u_lookup_strategy>1</u_lookup_strategy>
+        <u_notes>PLEASE NOTE:&#13;
+Although the "fatal" log level is configured in that sensor and exists in the syslog table, there is no OOTB API method to write log statements at that level. Therefore, I implemented my own LogHelper class, which provides more options and a method to log "fatal" statements. For more information, see my article on the topic at https://www.servicenow.com/community/developer-articles/just-another-log-helper/ta-p/2315453.&#13;
+------------------------------------------------------------------------------------------------------------------&#13;
+For more information please refer to:&#13;
+-&gt; https://support.servicenow.com/kb?id=kb_article_view&amp;sysparm_article=KB0996035&#13;
+------------------------------------------------------------------------------------------------------------------&#13;
+Adjust the values below according to your instance type and your requirements and  decide on a practical execution frequency!</u_notes>
+        <u_severity>2</u_severity>
+        <u_table>syslog</u_table>
+        <u_threshold>100</u_threshold>
+        <upgrade_safe>false</upgrade_safe>
+    </u_sensor>
+</record_update>

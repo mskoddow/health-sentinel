@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_sensor">
+    <u_sensor action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Scheduled Jobs on an Application Node are waiting to be executed</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2025-05-24 11:01:47</run_start>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>on_demand</run_type>
+        <script><![CDATA[new global.Sensor(current).run(); ]]></script>
+        <sys_class_name>u_sensor</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-24 14:08:22</sys_created_on>
+        <sys_id>4fffabc483752290009231b6feaad31a</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Scheduled Jobs on an Application Node are waiting to be executed</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>u_sensor_4fffabc483752290009231b6feaad31a</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-25 13:27:40</sys_updated_on>
+        <time_zone/>
+        <u_description>Detects if the application nodes' waiting queue for background jobs to be executed has exceeded the configured value.&#13;
+</u_description>
+        <u_extracted_fields>{"system_id":"20","u_scheduler_queue_length":"5"}</u_extracted_fields>
+        <u_filter table="sys_cluster_state">u_scheduler_queue_length&gt;=10<item endquery="false" field="u_scheduler_queue_length" goto="false" newquery="false" operator="&gt;=" or="false" value="10"/>
+        </u_filter>
+        <u_fired_event display_value="health_sentinel.generic">74ab81a18325e250009231b6feaad3dd</u_fired_event>
+        <u_included_findings>10</u_included_findings>
+        <u_last_run/>
+        <u_lookup_strategy>1</u_lookup_strategy>
+        <u_notes>Each ServiceNow application node has a background scheduler that claims up to 20 jobs at a time and places them in the scheduler queue. These jobs are then processed by three types of workers. The queue becomes critical when the burst worker mechanism activates. This special worker only engages when a job has priority ≤ 25 and the job has been queued for 60 seconds or more. &#13;
+The critical nature of the queue is more about processing delays rather than absolute queue length - when jobs consistently wait 60+ seconds for processing, the system automatically recognizes this as a critical situation requiring the burst worker intervention.&#13;
+However it is important to monitor the scheduler queue length and if the number of waiting jobs is permanentely increasing.&#13;
+----------------------------------------------------------------------------------------------------------------------------&#13;
+PLEASE NOTE:&#13;
+This sensor requires the feature "Node Health Monitor" (https://developer.servicenow.com/connect.do#!/share/contents/4067296_node_health_monitor) before it can be used!&#13;
+----------------------------------------------------------------------------------------------------------------------------&#13;
+Adjust the values below according to your instance type and your requirements and  decide on a practical execution frequency!</u_notes>
+        <u_severity>2</u_severity>
+        <u_table>sys_cluster_state</u_table>
+        <u_threshold>0</u_threshold>
+        <upgrade_safe>false</upgrade_safe>
+    </u_sensor>
+</record_update>

@@ -12,15 +12,13 @@
         <change_fields>false</change_fields>
         <client_callable>false</client_callable>
         <collection>u_sensor</collection>
-        <condition/>
+        <condition>gs.isInteractive() &amp;&amp; !current.isNewRecord()</condition>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="u_sensor">u_tableISNOTEMPTY^EQ<item endquery="false" field="u_table" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
-            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
-        </filter_condition>
+        <filter_condition/>
         <is_rest>false</is_rest>
         <message/>
-        <name>Validate Table Name</name>
+        <name>Validate Sensor</name>
         <order>100</order>
         <priority>100</priority>
         <rest_method/>
@@ -31,16 +29,10 @@
         <role_conditions/>
         <script><![CDATA[(function executeRule(current) {
 
-	var _strTableName = String(current.getValue('u_table') || '');
+	var _objSensor = new global.Sensor(current);
 	
-	if (!gs.tableExists(_strTableName)) {
-		gs.addErrorMessage(
-			gs.getMessage(
-				'Specified table "{0}" does not exist in that instance!',
-				[_strTableName]
-			)
-		);
-
+	if (!_objSensor.isValid()) {
+		gs.addErrorMessage(_objSensor.getValidationResult());
 		current.setAbortAction(true);
 	}
 
@@ -51,17 +43,17 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>f30ad9558361a250009231b6feaad395</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_name>Validate Table Name</sys_name>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Validate Sensor</sys_name>
         <sys_overrides/>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_f30ad9558361a250009231b6feaad395</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-15 14:12:50</sys_updated_on>
+        <sys_updated_on>2025-05-24 11:08:03</sys_updated_on>
         <template/>
-        <when>before</when>
+        <when>before_display</when>
     </sys_script>
     <sys_translated_text action="delete_multiple" query="documentkey=f30ad9558361a250009231b6feaad395"/>
     <sys_es_latest_script action="INSERT_OR_UPDATE">

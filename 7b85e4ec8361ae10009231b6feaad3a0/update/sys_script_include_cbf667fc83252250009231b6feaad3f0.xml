@@ -15,7 +15,6 @@ Signal.prototype = {
     initialize: function() {
 		this._isValid              = false;
 		this._strDetectionTime     = new GlideDateTime().getValue();
-		this._objParameters        = {};
 		this._strNodeName          = 'not initialized';
 		this._strSensorName        = 'not initialized';
 		this._strSensorDescription = 'not initialized';
@@ -70,64 +69,6 @@ Signal.prototype = {
 	
 	) {
 		return this._strNodeName;
-	},
-
-
-	setParameters: function(
-		objParameters
-	) {
-		if (typeof objParameters !== 'object') {
-			throw new TypeError(
-				'[Signal.setParameters] Value of parameter "objParameters" is not ' +
-				'of type "Object"!'
-			);
-		}
-
-		this._objParameters = objParameters;
-	},
-
-
-	getParameters: function(
-
-	) {
-		return this._objParameters;
-	},
-
-
-	setParameter: function(
-		strKey, 
-		objValue
-	) {
-		if (typeof strKey !== 'string' || strKey === null) {
-			throw new TypeError(
-				'[Signal.setParameter] Value of parameter "strKey" is not of type "String"!'
-			);
-		}
-
-		if (JSUtil.nil(objValue)) {
-			throw new TypeError(
-				'[Signal.setParameter] Parameter "objValue" has no value!'
-			);		
-		}
-
-		this._objParameters[strKey.trim()] = objValue;
-	},
-
-
-	getParameter: function(
-		strKey
-	) {
-		if (typeof strKey !== 'string' || strKey === null) {
-			throw new TypeError(
-				'[Signal.setParameter] Value of parameter "strKey" is not of type "String"!'
-			);
-		}
-
-		var _strKey = strKey.trim();
-
-		return _strKey in this.getParameters() ? 
-			this.getParameters()[_strKey] :
-			'';
 	},
 
 
@@ -373,8 +314,6 @@ Signal.prototype = {
 				this.getDetectionTime(),
 			detecting_node:
 				this.getNodeName(),
-			parameters:
-				this.getParameters(),
 			sensor: {
 				severity:
 					this.getSensorSeverity(),
@@ -440,10 +379,6 @@ Signal.prototype = {
 
 			if (_jsonPayload.detecting_node) {
 				this.setNodeName(_jsonPayload.detecting_node);
-			}
-
-			if (_jsonPayload.parameters) {
-				this.setParameters(_jsonPayload.parameters);
 			}
 
 			if (_jsonPayload.sensor.severity) {
@@ -514,14 +449,14 @@ Signal.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-14 11:23:49</sys_created_on>
         <sys_id>cbf667fc83252250009231b6feaad3f0</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>Signal</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_cbf667fc83252250009231b6feaad3f0</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-15 02:11:03</sys_updated_on>
+        <sys_updated_on>2025-05-24 05:24:44</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>cbf667fc83252250009231b6feaad3f0</id>

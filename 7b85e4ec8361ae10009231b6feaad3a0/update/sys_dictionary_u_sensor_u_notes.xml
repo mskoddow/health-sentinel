@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update>
-    <sys_dictionary action="INSERT_OR_UPDATE" element="u_description" table="u_sensor">
+    <sys_dictionary action="INSERT_OR_UPDATE" element="u_notes" table="u_sensor">
         <active>true</active>
         <array>false</array>
         <attributes>edge_encryption_enabled=true</attributes>
         <audit>false</audit>
         <calculation/>
-        <choice/>
+        <choice>0</choice>
         <choice_field/>
         <choice_table/>
-        <column_label>Description</column_label>
+        <column_label>Notes</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -21,14 +21,14 @@
         <dynamic_creation_script/>
         <dynamic_default_value/>
         <dynamic_ref_qual/>
-        <element>u_description</element>
+        <element>u_notes</element>
         <element_reference>false</element_reference>
         <foreign_database/>
         <formula/>
         <function_definition/>
         <function_field>false</function_field>
         <internal_type display_value="String">string</internal_type>
-        <mandatory>true</mandatory>
+        <mandatory>false</mandatory>
         <max_length>2000</max_length>
         <name>u_sensor</name>
         <next_element/>
@@ -46,14 +46,14 @@
         <staged>false</staged>
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-13 04:35:43</sys_created_on>
-        <sys_name>Description</sys_name>
+        <sys_created_on>2025-05-25 13:18:24</sys_created_on>
+        <sys_name>Notes</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
-        <sys_update_name>sys_dictionary_u_sensor_u_description</sys_update_name>
+        <sys_update_name>sys_dictionary_u_sensor_u_notes</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-25 13:18:25</sys_updated_on>
+        <sys_updated_on>2025-05-25 13:18:24</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

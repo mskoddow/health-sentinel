@@ -11,15 +11,24 @@
         <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[var Sensor = Class.create();
 
+Sensor.FIELD_ACTIVE            = 'active';
+Sensor.FIELD_NAME              = 'u_name';
+Sensor.FIELD_TABLENAME         = 'u_table';
+Sensor.FIELD_FINDINGSTHRESHOLD = 'u_threshold';
+Sensor.FIELD_FIREDEVENT        = 'u_fired_event';
+Sensor.FIELD_EXTRACTEDFIELDS   = 'u_extracted_fields';
+
+
 Sensor.prototype = {
 
 	initialize: function(
 		grSensor, 
 		isSimulation
 	) {
-		this._grSensor            = grSensor;
-		this._isSimulation        = isSimulation === true;
-		this._objSignalParameters = {};
+		this._grSensor               = grSensor;
+		this._isSimulation           = isSimulation === true;
+		this._hasValidationPerformed = false;
+		this._strValidationResult    = '';		
 
 		if (!this._isSimulation) {
 			if (GlideController.exists('is_sensor_simulation')) {
@@ -42,19 +51,117 @@ Sensor.prototype = {
 	},
 
 
-	isValidSensor: function(
+	getFieldElement: function(
+		strFieldName
+	) {
+		return this._grSensor.getElement(strFieldName);
+	},
+	
+
+	getFieldLabel: function(
+		strFieldName
+	) {
+		return this.getFieldElement(strFieldName).getLabel();
+	},
+
+
+	isValid: function(
 
 	) {
-		var _isValid = 
-			this.isValidRecord() &&
-			!this._grSensor.u_table.nil() &&
-			gs.tableExists(this._grSensor.getValue('u_table')) &&
-			!this._grSensor.u_filter.nil() &&
-			!this._grSensor.u_fired_event.nil() && 
-			this._grSensor.u_fired_event.getRefRecord() !== null &&
-			this._grSensor.u_fired_event.getRefRecord().isValidRecord();
+		return this.getValidationResult() === '';	
+	},
 
-		return _isValid;	
+
+	getValidationResult: function(
+
+	) {
+		if (this._hasValidationPerformed === true) {
+			return this._strValidationResult;
+		}
+
+		this._hasValidationPerformed = true;
+
+		var _this = this;
+
+		var _setValidationResult = 
+			function(strValidationResult, arrReplacements) {
+				_this._strValidationResult = 
+					gs.getMessage(strValidationResult, arrReplacements);
+
+				return _this._strValidationResult;
+			};
+
+		if (!this.isValidRecord()) {
+			return _setValidationResult(
+				'Sensor object not initialized with a valid GlideRecord instance!'
+			);
+		}
+
+
+/*
+		if () {
+			return _setValidationResult(
+				'',
+				[]
+			);
+		}
+*/
+
+		var _strTableName = this.getTableName();
+
+		if (_strTableName === '') {
+			return _setValidationResult(
+				'No table name entered into field "{0}"!',
+				[this.getFieldLabel(Sensor.FIELD_TABLENAME)]
+			);
+		}
+
+		if (!gs.tableExists(_strTableName)) {
+			return _setValidationResult(
+				'There is no table for the entered name "{0}" in that instance!',
+				[_strTableName]
+			);
+		}
+
+
+		var _objExtractedFields = this.getExtractedFields();
+
+		for (var _strFieldName in _objExtractedFields) {
+			if (Object.prototype.hasOwnProperty.call(_objExtractedFields, _strFieldName)) {
+				if (!new GlideTableDescriptor(_strTableName).isValidField(_strFieldName)) {
+					return _setValidationResult(
+						'The specified field "{0}" does not exist in table "{1}"!',
+						[_strFieldName, _strTableName]
+					);
+				}
+			}
+		}	
+
+
+		var _numThreshold = this.getFindingsThreshold();
+
+		if (_numThreshold < 0) {
+			return _setValidationResult(
+				'You can only enter positive number or zero at field "{0}"!',
+				[this.getFieldLabel(Sensor.FIELD_FINDINGSTHRESHOLD)]
+			);
+		}
+
+
+		var _objFiredEvent = this.getFieldElement(Sensor.FIELD_FIREDEVENT);
+
+		if (_objFiredEvent.nil() || 
+			_objFiredEvent.getRefRecord() === null ||
+			!_objFiredEvent.getRefRecord().isValidRecord()
+		) {
+			return _setValidationResult(
+				'No valid event type selected at field "{0}"!',
+				[_objFiredEvent.getLabel()]
+			);
+		}
+		
+
+		return this._strValidationResult;
 	},
 
 
@@ -65,22 +172,72 @@ Sensor.prototype = {
 	},
 
 
-	addSignalParameter: function(
-		strKey, 
-		objValue
-	) {	
-		if (typeof strKey === 'string' && JSUtil.notNil(objValue)) {
-			this._objSignalParameters[strKey] = objValue;
-		}
-
-		return this;
-	},
-
-
 	isActive: function(
 
 	) {
-		return this._grSensor.getValue('active') === '1';
+		return this._grSensor.getValue(Sensor.FIELD_ACTIVE) === '1';
+	},
+
+
+	getSensorName: function(
+
+	) {
+		return String(this._grSensor.getValue(Sensor.FIELD_NAME)  || '???').trim();
+	},
+
+
+	getTableName: function(
+
+	) {
+		return String(this._grSensor.getValue(Sensor.FIELD_TABLENAME)  || '').trim();
+	},
+
+
+	getFindingsThreshold: function(
+
+	) {
+		return Number(this._grSensor.getValue(Sensor.FIELD_FINDINGSTHRESHOLD) || 0);
+	},
+
+
+	getFiredEvent: function(
+
+	) {
+		return String(this._grSensor.getValue(Sensor.FIELD_FIREDEVENT)  || '');
+	},
+
+
+	getExtractedFields: function(
+
+	) {
+		var _objExtractedFields = {};
+		var _strExtractedFields = 
+				String(this._grSensor.getValue(Sensor.FIELD_EXTRACTEDFIELDS) || '').trim();
+			
+		if (_strExtractedFields !== '') {
+			try {
+				var _jsonExtractedFields = JSON.parse(_strExtractedFields);
+
+				for (var _strKey in _jsonExtractedFields) {
+					if (Object.prototype.hasOwnProperty.call(_jsonExtractedFields, _strKey)) {
+						_strKey = String(_strKey).trim();
+					
+						_objExtractedFields[_strKey] = 
+							String(_jsonExtractedFields[_strKey]).trim();
+					}
+				}
+			}
+			catch(e) {
+				global.HealthSentinelUtils.logFatal(
+					'Sensor.getExtractedFields',
+					'[{0}] Unexptected JavaScript error when trying to process the ' +
+					'value of field "{1}"!',
+					this.getSensorName(), Sensor.FIELD_EXTRACTEDFIELDS, e
+				);
+			}
+		}
+	
+		return _objExtractedFields;
 	},
 
 
@@ -97,29 +254,24 @@ Sensor.prototype = {
 			return null;
 		}
 
-
-		var _strSensorName = this._grSensor.getValue('name') || '???';
-
-		if (!this.isValidSensor()) {
+		if (!this.isValid()) {
 			global.HealthSentinelUtils.logError(
 				'Sensor.run',
 				'[{0}] Sensor is not configured properly and therefore cannot be executed!',
-				_strSensorName
+				this.getSensorName()
 			);
 
 			return null;
 		}
 		
 
-		if (!this._isSimulation &&
-			gs.getProperty('health_sentinel.is_active', '') !== 'true'
-		) {
+		if (!this._isSimulation && !HealthSentinelUtils.isActive()) {
 			global.HealthSentinelUtils.logError(
 				'Sensor.run',
 				'[{0}] Health Sentinel functionality is not activated ' +
 				'and therefore the sensor cannot be executed! Please check ' +
 				'system property "{1}"!',
-				_strSensorName, 
+				this.getSensorName(), 
 				global.HealthSentinelConst.SYSTEM_PROPERTY_IS_ACTIVE
 			);
 
@@ -128,15 +280,26 @@ Sensor.prototype = {
 
 
 		global.HealthSentinelUtils.logInfo(
-			'Sensor.run', '[{0}] Execute sensor ...', _strSensorName
+			'Sensor.run', '[{0}] Execute sensor ...', this.getSensorName()
 		);
+
+
+		if (this.isValid()) {
+			global.HealthSentinelUtils.logError(
+				'Sensor.run',
+				'[{0}] Sensor is not valid and therefore cannot be executed! ' +
+				'Error Message: {1}',
+					this.getSensorName(), this.getValidationResult()
+				);
+
+				return null;
+			}
 
 
 		try {
 			var _objSignal = new global.Signal();
 
 			_objSignal.setNodeName(global.HealthSentinelUtils.getShortNodeName());
-			_objSignal.setParameters(this._objSignalParameters);
 			_objSignal.setSensorName(_strSensorName);
 			_objSignal.setSensorDescription(this._grSensor.getValue('u_description') || '');
 			_objSignal.setSensorSysID(this._grSensor.getValue('sys_id'));
@@ -146,33 +309,9 @@ Sensor.prototype = {
 			_objSignal.setSensorSeverity(this._grSensor.getDisplayValue('u_severity') || '');
 
 
-			var _arrIncludedFindings  = [];
+			var _arrIncludedFindings = [];
 			var _objUsedFields       = {};
-			var _grDbObject          = new GlideRecord('sys_db_object');
-			
-
-			var _strTableName = String(this._grSensor.getValue('u_table') || '');
-
-			if (!gs.tableExists(_strTableName)) {
-				global.HealthSentinelUtils.logError(
-					'Sensor.run',
-					'[{0}] table "{1}" does not exist in that instance!',
-					_strSensorName, _strTableName 
-				);
-
-				return null;
-			}
-
-			if (!_grDbObject.get('name', _strTableName)) {
-				global.HealthSentinelUtils.logError(
-					'Sensor.run',
-					'[{0}] It was not possible to load a corresponding record from table ' +
-					'"sys_db_object" for table "{1}"!',
-					_strSensorName, _strTableName 
-				);
-
-				return null;
-			}
+			var _strTableName        = this.getTableName();
 
 			_objSignal.setSensorTableName(_strTableName);
 			_objSignal.setSensorTableLabel(
@@ -188,8 +327,7 @@ Sensor.prototype = {
 			var _returnAllFindings = 
 				this._grSensor.getValue('u_lookup_strategy') === '2';
 			
-			var _numThreshold = 
-				Number(this._grSensor.getValue('u_threshold') || 0);
+			var _numThreshold = this.getFindingsThreshold();
 			
 			var _numIncludedFindings = 
 				Number(this._grSensor.getValue('u_included_findings') || 0);
@@ -265,12 +403,12 @@ Sensor.prototype = {
 						}
 					}
 				}
-				catch (e) {
+				catch(e) {
 					global.HealthSentinelUtils.logFatal(
 						'Sensor.run',
 						'[{0}] Unexptected JavaScript error when trying to process the ' +
 						'value of field "Extracted fields"!',
-						_strSensorName, e
+						this.getSensorName(), e
 					);
 				}
 			}
@@ -344,11 +482,11 @@ Sensor.prototype = {
 
 			return _objSignal;
 		}
-		catch (e) {
+		catch(e) {
 			global.HealthSentinelUtils.logFatal(
 				'Sensor.run',
 				'[{0}] Unexptected JavaScript error when running sensor!',
-				_strSensorName, e
+				this.getSensorName(), e
 			);
 
 			return null;
@@ -370,14 +508,14 @@ Sensor.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-13 13:38:57</sys_created_on>
         <sys_id>3b5df66083adae10009231b6feaad314</sys_id>
-        <sys_mod_count>26</sys_mod_count>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>Sensor</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_3b5df66083adae10009231b6feaad314</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-21 08:10:16</sys_updated_on>
+        <sys_updated_on>2025-05-24 11:35:45</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>3b5df66083adae10009231b6feaad314</id>
