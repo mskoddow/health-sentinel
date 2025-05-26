@@ -1,5 +1,3 @@
-<img src="health_sentinel_logo.svg" width="200"/>
-
 # Health Sentinel
 ## Summary
 The Health Sentinel application for ServiceNow is designed to enhance platform monitoring by introducing configurable "sensors" that detect anomalies within the system. These sensors operate on scheduled intervals, querying specific tables for conditions that may indicate issues, such as recurring errors or prolonged process executions. When predefined thresholds are exceeded, the application triggers custom events containing detailed information, enabling automated responses like email alerts, notifications, or workflow initiations. This approach aims to proactively identify and address potential problems, improving system stability and reducing the need for manual oversight.
