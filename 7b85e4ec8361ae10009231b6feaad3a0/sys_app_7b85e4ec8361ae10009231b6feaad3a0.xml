@@ -13,7 +13,7 @@
         <license_category>none</license_category>
         <license_definition/>
         <license_model>none</license_model>
-        <logo>a43a45608331a290009231b6feaad3a2</logo>
+        <logo>488c043083fda290009231b6feaad335</logo>
         <menu display_value="Health Sentinel">9b3055688365ae10009231b6feaad3c0</menu>
         <name>Health Sentinel</name>
         <package_json/>
@@ -36,16 +36,16 @@ For detailed information and instructions please refer to my community article a
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-13 02:25:14</sys_created_on>
         <sys_id>7b85e4ec8361ae10009231b6feaad3a0</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-25 15:20:59</sys_updated_on>
+        <sys_updated_on>2025-05-26 15:00:03</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <uninstall_blocked>false</uninstall_blocked>
         <user_role display_value="health_sentinel.user" name="health_sentinel.user">53db64e883a1ae10009231b6feaad315</user_role>
         <vendor/>
         <vendor_prefix/>
-        <version>0.9.0</version>
+        <version>0.9.1</version>
     </sys_app>
     <sys_translated_text action="delete_multiple" query="documentkey=7b85e4ec8361ae10009231b6feaad3a0"/>
     <sys_attachment action="INSERT_OR_UPDATE">
@@ -54,18 +54,18 @@ For detailed information and instructions please refer to my community article a
         <compressed>true</compressed>
         <content_type>image/svg+xml</content_type>
         <file_name>logo</file_name>
-        <hash>a2461ef8f35f9d9dfd6991de3bddcb7f313f9bb5a66563e923ada8ea6d3daf74</hash>
+        <hash>b96c7d4f826cee4a4647988237f929eef73e160bbcf31516a2cb9ad0e5012d49</hash>
         <image_height/>
         <image_width/>
-        <size_bytes>2676</size_bytes>
-        <size_compressed>1048</size_compressed>
+        <size_bytes>1943</size_bytes>
+        <size_compressed>811</size_compressed>
         <state>available</state>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-25 15:20:59</sys_created_on>
-        <sys_id>a43a45608331a290009231b6feaad3a2</sys_id>
+        <sys_created_on>2025-05-26 05:29:55</sys_created_on>
+        <sys_id>488c043083fda290009231b6feaad335</sys_id>
         <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>system</sys_updated_by>
-        <sys_updated_on>2025-05-25 15:20:59</sys_updated_on>
+        <sys_updated_on>2025-05-26 05:29:55</sys_updated_on>
         <table_name>ZZ_YYsys_app</table_name>
         <table_sys_id>7b85e4ec8361ae10009231b6feaad3a0</table_sys_id>
     </sys_attachment>
@@ -73,18 +73,18 @@ For detailed information and instructions please refer to my community article a
         <data>H4sIAAAAAAAA/w==</data>
         <length>16</length>
         <position>0</position>
-        <sys_attachment display_value="logo" sys_id="a43a45608331a290009231b6feaad3a2">a43a45608331a290009231b6feaad3a2</sys_attachment>
+        <sys_attachment display_value="logo" sys_id="488c043083fda290009231b6feaad335">488c043083fda290009231b6feaad335</sys_attachment>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-25 15:20:59</sys_created_on>
-        <sys_id>e43a45608331a290009231b6feaad3a2</sys_id>
+        <sys_created_on>2025-05-26 05:29:55</sys_created_on>
+        <sys_id>888c043083fda290009231b6feaad335</sys_id>
     </sys_attachment_doc>
     <sys_attachment_doc action="INSERT_OR_UPDATE">
-        <data>5VZdj+I2FH3fX3HlUaUZaTD+dgKEFd1K2we20mrbl74FMJBuSKLEDEx/fa9DCDAzrXaeKwGxr+1jn+tzT5h8PO5yeHJ1k5VFQjhlBFyxLFdZsUnI3q8HEfk4/TBpnjbwlLnDz+UxIQwYCNZ+CeD6oknI1vtqNBweDgd6kLSsN0McZUNc100ZLY6nWQ1OW5TH5wGO0WW5I9MPAJPaLT0cspXfJqTF3bpss/Vdp/HPuUvIOsvzEdSbxb20jyDjR+D6YUyGLUKV+i2sEvIF4phKbkBQbQXMgVtLlYhAITtl4FMfiCS1sUEMTmXMgUtNWWzPy3msaNzOV5YKJfpxwalg+ry663Xg89vN/yQQzpyQoixcoFGX392goyl7Xqf4iRk3BmkZ/giBGmTIqFz8hdkZsH8jyjWeP+zNjaKKh/MqHQeip37EqcE+V4JaLoELjLK4X201tSxM15rGgvfjUlEhxHl11+uw5y/27one8ZmcKUugrNJl5p9RLTTqid7w4R0f744efJ0WzbqsdwnZpb7OjvecaiNEuGTWfjDPkdAMEzPQhsY6lrHEtpCU2UgZ+/CGTITWj3D+eRjDuiz8YJ3usvx5BLM6S/NHaHDjQePqbN2NN9nfeBdcUV0du9ChFeMILGNjCOcdpMVyW9Yj2GWrVe7GcNhm3g0aJI1rq9rdXp3AIsDqClLGjOiITH91ae63k2EA+79kQd5kwQoy/eYKnxUuv8rDRd3nsuOWxlh2czCGWhNfBaykwqKQI2pbTdqY2ggnSFwpJQYiQ0Uch7gWwQpiQSNmUbSGqtYbziruITnTNBLmgsm5oFKaK1DOIxophU+8nEiHiMAq0KqvnPnFU07A/2UD6BR9KMdkLNMqIXW5L1bv9AfV1dPKrZvQwOYubb63U+p0ldZfsEdOI9eJ5q2Vw5wbBprB1/AMsfZrMaBObdUO95Xe3vVpS0Qbhq269uI4cseqrH2/F0ZwkYMg7RRNvX0tbGu3RsO4dbcfnc4JBAIJ+QMV5HO3QscN094FIl6ByPeDyFcg6v0g6hWIfj+IfgVirkEmw5uLmQzPQplsINwevu/r/P6ul8rDlW2/ZUyS8SiI8ZUxSbR89AhmXxjTlVZ1p8NbFXIeZIgNyWCGyrPhnwaG0YYYmCvtXQ76GX8zdJGHmzeOusg8LTI8sfv9TABSj+df7L37Ld0ht54ZknyuXCg9j/MJPKX53jXh3053tLE0fZvAal8nRDUEale51H/CgsVbyQpMalbcVEageEr45mV9hnq/cLhU6jmChsnxBD+hYXbPo2gdNETOrZ5q48sKyvW6cXgSduUeZTVYljka9R1jv6jZbNyGunyNwgt6+DYI/3GQC99bUtdSm4T/g9N/AP9Qr5h0CgAA</data>
-        <length>1384</length>
+        <data>zVVNb9swDL33VxAqBjRAo0jydxK3yDZsO7QDiu20mxrLsVDHNmSlSffrRzmO06w9FD0MA+yYlETq8elRmV/v1iU8KtPqukoJp4yAqpZ1pqtVSjY2H8fk+ups3j6u4FGr7cd6lxIGDATrXgIYX7UpKaxtppPJdrulW4/WZjXBWTbBOHJ1BjDPVN46A821bB9AZylpC63K7BZdsp/CSaOWFrY6s0VKuvyF0qvC9k6uyzIl96VcPpDJENNIWwDmu+UOFNzwJAYvoQHcOcsNdi/adwL2a7rpX4eE20JbdUg4nziAHejJAfWbYJ2zL4KJiICLR/JMeXF+LHG0z38Klju0cQB+iFjxmwR7qLHDvne7yQHpOV94Cx/3qBu51PYJD4PGfWardhaskVWb12adkrW0Ru8uOBWXwLqHX8JYMMp8PBpnRzQOkoQFIwKtfSpVStwuUzCr+wsRBJdw+BnNIK8rO87lWpdPU1gYLctLaHGvcauMzvv5Vv9WUxBRs5uBgzOW1bKozRTWOstKNYOO6XGL4HFdY9QMBYSycyRiLUFMrr4pWdpiPnHh7yzLoywKwv+lqAiL+qEqqytVPitr0AF4MQ09D7UQwA0EPmVhb4dYI9qss2PqBwlw3zlRRCMURuzsOKRJxIGHzsE9qeeLPp5zD9eJPgMXgiZh3KfgnqACV3EeO8/n1I+5G3VeKCiGYJKD7Kq6Uo5OUz+ocd8GHvWGoRKLW8omJabeVNlA/H52Tz1P8KQiPK/RrNfra1eCkZk0pzfCP+ju1fOWHSCMegx/tyzS1/fuIhGAj7sPkbtAgB8dtz0m+4q/GhUwOmlb/1iirDSqWv08iBykRY3fb6z6LtfI46B+AvapUY5mi+sJPMpyo1p3I/fQZl442ASyjUmJ3xIwqlHSfsLDwStLV1i4rk5IcSXuSVm9vKXeQ/qrinldGGGILRxi4wavScNJ60jhUSSHEew1jgR8wF7rvzvRNZ8bOVgD062tG6jzvFVIBHuGp27Gy7rErj5n7LO/WMy6of64psMl+zIJf3uSI92nRT1X49z9ZV79Ae8bxpCXBwAA</data>
+        <length>1068</length>
         <position>1</position>
-        <sys_attachment display_value="logo" sys_id="a43a45608331a290009231b6feaad3a2">a43a45608331a290009231b6feaad3a2</sys_attachment>
+        <sys_attachment display_value="logo" sys_id="488c043083fda290009231b6feaad335">488c043083fda290009231b6feaad335</sys_attachment>
         <sys_created_by>maik.skoddow</sys_created_by>
-        <sys_created_on>2025-05-25 15:20:59</sys_created_on>
-        <sys_id>683a45608331a290009231b6feaad3a2</sys_id>
+        <sys_created_on>2025-05-26 05:29:55</sys_created_on>
+        <sys_id>0c8c043083fda290009231b6feaad335</sys_id>
     </sys_attachment_doc>
 </record_update>

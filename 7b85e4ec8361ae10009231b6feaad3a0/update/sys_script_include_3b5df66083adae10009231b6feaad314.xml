@@ -12,7 +12,7 @@
         <script><![CDATA[var Sensor = Class.create();
 
 Sensor.FIELD_ACTIVE            = 'active';
-Sensor.FIELD_NAME              = 'u_name';
+Sensor.FIELD_NAME              = 'name';
 Sensor.FIELD_TABLENAME         = 'u_table';
 Sensor.FIELD_FINDINGSTHRESHOLD = 'u_threshold';
 Sensor.FIELD_FIREDEVENT        = 'u_fired_event';
@@ -68,7 +68,9 @@ Sensor.prototype = {
 	isValid: function(
 
 	) {
-		return this.getValidationResult() === '';	
+		var _strValidationResult = this.getValidationResult();
+
+		return _strValidationResult === '';	
 	},
 
 
@@ -265,7 +267,7 @@ Sensor.prototype = {
 		}
 		
 
-		if (!this._isSimulation && !HealthSentinelUtils.isActive()) {
+		if (!this._isSimulation && !global.HealthSentinelUtils.isActive()) {
 			global.HealthSentinelUtils.logError(
 				'Sensor.run',
 				'[{0}] Health Sentinel functionality is not activated ' +
@@ -284,7 +286,7 @@ Sensor.prototype = {
 		);
 
 
-		if (this.isValid()) {
+		if (!this.isValid()) {
 			global.HealthSentinelUtils.logError(
 				'Sensor.run',
 				'[{0}] Sensor is not valid and therefore cannot be executed! ' +
@@ -300,7 +302,7 @@ Sensor.prototype = {
 			var _objSignal = new global.Signal();
 
 			_objSignal.setNodeName(global.HealthSentinelUtils.getShortNodeName());
-			_objSignal.setSensorName(_strSensorName);
+			_objSignal.setSensorName(this.getSensorName());
 			_objSignal.setSensorDescription(this._grSensor.getValue('u_description') || '');
 			_objSignal.setSensorSysID(this._grSensor.getValue('sys_id'));
 			_objSignal.setSensorURL(
@@ -508,14 +510,14 @@ Sensor.prototype = {
         <sys_created_by>maik.skoddow</sys_created_by>
         <sys_created_on>2025-05-13 13:38:57</sys_created_on>
         <sys_id>3b5df66083adae10009231b6feaad314</sys_id>
-        <sys_mod_count>40</sys_mod_count>
+        <sys_mod_count>45</sys_mod_count>
         <sys_name>Sensor</sys_name>
         <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
         <sys_policy/>
         <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
         <sys_update_name>sys_script_include_3b5df66083adae10009231b6feaad314</sys_update_name>
         <sys_updated_by>maik.skoddow</sys_updated_by>
-        <sys_updated_on>2025-05-24 11:35:45</sys_updated_on>
+        <sys_updated_on>2025-05-26 14:58:02</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>3b5df66083adae10009231b6feaad314</id>
