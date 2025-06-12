@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_sensor">
+    <u_sensor action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>Large Number of Emails are not sent</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:10:00</run_period>
+        <run_start>2025-05-26 15:20:16</run_start>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[new global.Sensor(current).run(); ]]></script>
+        <sys_class_name>u_sensor</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-26 15:20:16</sys_created_on>
+        <sys_id>5ed19a348379e290009231b6feaad3f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Large Number of Emails are not sent</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>u_sensor_5ed19a348379e290009231b6feaad3f0</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-05-26 15:20:16</sys_updated_on>
+        <time_zone/>
+        <u_description>Checks if a high number of outbound emails are waiting to be sent or could not be sent due to errors.</u_description>
+        <u_extracted_fields>{"type":"20","subject":"100","error_string":"200"}</u_extracted_fields>
+        <u_filter table="sys_email">typeINsend-failed,send-ready<item display_value="send-failed,send-ready" endquery="false" field="type" goto="false" newquery="false" operator="IN" or="false" value="send-failed,send-ready"/>
+        </u_filter>
+        <u_fired_event display_value="health_sentinel.generic">74ab81a18325e250009231b6feaad3dd</u_fired_event>
+        <u_included_findings>10</u_included_findings>
+        <u_last_run/>
+        <u_lookup_strategy>1</u_lookup_strategy>
+        <u_notes/>
+        <u_severity>3</u_severity>
+        <u_table>sys_email</u_table>
+        <u_threshold>100</u_threshold>
+        <upgrade_safe>false</upgrade_safe>
+    </u_sensor>
+</record_update>

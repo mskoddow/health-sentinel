@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="u_sensor">
+    <u_sensor action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <business_calendar/>
+        <condition/>
+        <conditional>false</conditional>
+        <entered_time>1970-01-01 00:00:00</entered_time>
+        <max_drift/>
+        <name>PA Jobs finished with Errors</name>
+        <offset/>
+        <offset_type>0</offset_type>
+        <run_as/>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-02 00:00:00</run_period>
+        <run_start/>
+        <run_time>1969-12-31 23:00:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[new global.Sensor(current).run(); ]]></script>
+        <sys_class_name>u_sensor</sys_class_name>
+        <sys_created_by>maik.skoddow</sys_created_by>
+        <sys_created_on>2025-05-26 14:42:19</sys_created_on>
+        <sys_id>f45a4eb88339e290009231b6feaad387</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>PA Jobs finished with Errors</sys_name>
+        <sys_package display_value="Health Sentinel" source="7b85e4ec8361ae10009231b6feaad3a0">7b85e4ec8361ae10009231b6feaad3a0</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Health Sentinel">7b85e4ec8361ae10009231b6feaad3a0</sys_scope>
+        <sys_update_name>u_sensor_f45a4eb88339e290009231b6feaad387</sys_update_name>
+        <sys_updated_by>maik.skoddow</sys_updated_by>
+        <sys_updated_on>2025-06-12 02:39:39</sys_updated_on>
+        <time_zone/>
+        <u_description>It detects performance analytics data collection jobs that were not completed successfully during the data gathering process.</u_description>
+        <u_extracted_fields>{"job":"200","warnings":"5","errors":"5"}</u_extracted_fields>
+        <u_filter table="pa_job_logs">state=collected_error<item display_value="Collected with errors" endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="collected_error"/>
+        </u_filter>
+        <u_fired_event display_value="health_sentinel.generic">74ab81a18325e250009231b6feaad3dd</u_fired_event>
+        <u_included_findings>10</u_included_findings>
+        <u_last_run/>
+        <u_lookup_strategy>1</u_lookup_strategy>
+        <u_notes>PA Jobs with "Collected with errors" state can result in incomplete or missing data in your Performance Analytics dashboards and reports. This can affect the accuracy of KPIs, indicators, and overall analytics insights, making it essential to address these errors promptly to maintain data integrity.&#13;
+-----------------------------------------------------------------------------------------------------&#13;
+Common Error Scenarios&#13;
+Row Count Limitations: One frequent cause of collection errors is exceeding the maximum allowed row count for indicator sources. For example, you might see an error like "Fetched too many rows from indicator source... Allowed 50,000 Fetched 84,232". This can be resolved by increasing the value of the system property com.snc.pa.dc.max_row_count_indicator_source to accommodate the actual data volume.&#13;
+&#13;
+Timeout Issues: Collection jobs may encounter timeouts when processing large amounts of data or collecting from multiple days past the current run. This is particularly common with jobs like "SPM Data Collection job for PA" that handle substantial datasets.&#13;
+-----------------------------------------------------------------------------------------------------&#13;
+Adjust the values below according to your instance type and your requirements and  decide on a practical execution frequency!</u_notes>
+        <u_severity>4</u_severity>
+        <u_table>pa_job_logs</u_table>
+        <u_threshold>0</u_threshold>
+        <upgrade_safe>false</upgrade_safe>
+    </u_sensor>
+</record_update>
